@@ -1762,3 +1762,8 @@ vendor/etc/avf/early_vms_oem_vm.xml
 vendor/etc/init/avf_qcvm_manager.rc
 vendor/etc/init/vendor.qti.qtvm.proxyclient-service.rc
 vendor/etc/vintf/manifest/avf_qcvm_manager.xml
+
+# MiTEE userspace
+odm/bin/mitee_info
+odm/bin/tee-supplicant
+odm/lib64/libteecli.so

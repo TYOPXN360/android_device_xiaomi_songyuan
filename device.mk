@@ -69,7 +69,8 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/init/init.songyuan.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.songyuan.rc
+    $(LOCAL_PATH)/configs/init/init.songyuan.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.songyuan.rc \
+    $(LOCAL_PATH)/configs/init/tee-supplicant.rc:$(TARGET_COPY_OUT_ODM)/etc/init/tee-supplicant.rc
 
 # MiTEE: oemvm only (trustedvm's kernel lives on a partition we don't mount)
 PRODUCT_COPY_FILES += \
