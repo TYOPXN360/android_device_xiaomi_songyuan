@@ -55,6 +55,27 @@ def blob_fixup_gme_ois_read(
             f.write(content)
             f.truncate()
 
+def blob_fixup_miface_weak_nonsecure(
+    ctx: BlobFixupCtx,
+    file: File,
+    file_path: str,
+    *args,
+    **kwargs,
+):
+    # Use the non-secure camera and report WEAK strength
+    patches = [
+        (0x4C100, b'\x5a\x65\x41\x39', b'\xfa\x03\x1f\x2a'),  # mov w26, wzr
+        (0x4C818, b'\x33\x65\x41\x39', b'\xf3\x03\x1f\x2a'),  # mov w19, wzr
+        (0x75F44, b'\xea\x13\x40\x39', b'\x2a\x00\x80\x52'),  # mov w10, #1
+    ]
+    with open(file_path, 'rb+') as f:
+        content = bytearray(f.read())
+        if all(content[o:o + 4] == old for o, old, _ in patches):
+            for o, _, new in patches:
+                content[o:o + 4] = new
+            f.seek(0)
+            f.write(content)
+
 blob_fixups: blob_fixups_user_type = {
     (
         'odm/etc/camera/enhance_motiontuning.xml',
@@ -160,6 +181,8 @@ blob_fixups: blob_fixups_user_type = {
        'vendor/lib64/camera/components/com.qti.node.gme.so',
     ): blob_fixup()
         .call(blob_fixup_gme_ois_read),
+    'odm/lib64/libmiface.so': blob_fixup()
+        .call(blob_fixup_miface_weak_nonsecure),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
