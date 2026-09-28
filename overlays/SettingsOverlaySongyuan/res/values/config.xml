@@ -11,4 +11,7 @@
     <integer name="config_udfpsEnrollProgressBar">
         80
     </integer>
+
+    <!-- Face enrollment -->
+    <string name="config_face_enroll" translatable="false">org.lineageos.faceenroll/.FaceEnrollActivity</string>
 </resources>

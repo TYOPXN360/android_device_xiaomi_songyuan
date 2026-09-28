@@ -79,10 +79,12 @@ PRODUCT_COPY_FILES += \
 # Face (mifaced, MiTEE face TA)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/miface.rc:$(TARGET_COPY_OUT_ODM)/etc/init/miface.rc \
+    $(LOCAL_PATH)/configs/permissions/signature-permissions-faceenroll.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/signature-permissions-faceenroll.xml \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.face-V4-ndk.vendor
+    android.hardware.biometrics.face-V4-ndk.vendor \
+    SongyuanFaceEnroll
 
 # Lights (rear AW21024 LED)
 PRODUCT_PACKAGES += \

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2026 The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Face enrollment</string>
+    <string name="enroll_title">Move your head slowly in a circle</string>
+    <string name="enroll_progress">%d%%</string>
+    <string name="enroll_skip">Skip</string>
+    <string name="enroll_done">Done</string>
+</resources>
