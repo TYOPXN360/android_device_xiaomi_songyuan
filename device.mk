@@ -76,6 +76,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qcvm/qcvm_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/qcvm_config.json
 
+# Face (mifaced, MiTEE face TA)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init/miface.rc:$(TARGET_COPY_OUT_ODM)/etc/init/miface.rc \
+    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.biometrics.face.xml
+
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.face-V4-ndk.vendor
+
 # Lights (rear AW21024 LED)
 PRODUCT_PACKAGES += \
     android.hardware.light-service.sm8850

@@ -1767,3 +1767,14 @@ vendor/etc/vintf/manifest/avf_qcvm_manager.xml
 odm/bin/mitee_info
 odm/bin/tee-supplicant
 odm/lib64/libteecli.so
+
+# Face
+odm/bin/hw/mifaced
+odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml
+odm/etc/vintf/manifest/vendor.xiaomi.hardware.aon.auth.xml
+odm/lib64/libmiface.so
+odm/mitee/ta/655a4b46-cd77-11ea-aafbf382a6988e7b.ta
+odm/mitee/ta/66147267-5b44-4aa3-bd734138c7fab03a.ta
+odm/mitee/ta/a13339be-7082-4d2d-bf83a53e4687a635.ta
+odm/mitee/ta/a3ba6512-6e0e-4065-93165e4a7d04ca08.ta
+vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so

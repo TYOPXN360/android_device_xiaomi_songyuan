@@ -1,0 +1,11 @@
+on post-fs-data
+    mkdir /data/vendor/face 0775 system system
+
+service vendor.miface /odm/bin/hw/mifaced
+    class hal
+    user system
+    group system
+    disabled
+
+on property:ro.vendor.miface.started=true && property:sys.boot_completed=1 && property:vendor.mitee_vm.boot_completed=1
+    start vendor.miface
