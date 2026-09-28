@@ -71,6 +71,10 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/init.songyuan.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.songyuan.rc
 
+# MiTEE: oemvm only (trustedvm's kernel lives on a partition we don't mount)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qcvm/qcvm_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/qcvm_config.json
+
 # Lights (rear AW21024 LED)
 PRODUCT_PACKAGES += \
     android.hardware.light-service.sm8850

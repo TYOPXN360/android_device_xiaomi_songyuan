@@ -31,3 +31,6 @@ debug.sf.late.sf.duration.120=10333333
 debug.sf.late.sf.duration.144=10347222
 # Lights: the rear AW21024 LEDs are white
 ro.vendor.light.white_only=true
+
+# MiTEE: start the oemvm early VM (proxy sets vendor.mitee_vm.boot_completed)
+ro.vendor.qtvm.auto.start=oemvm

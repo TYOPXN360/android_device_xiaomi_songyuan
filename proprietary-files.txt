@@ -1733,3 +1733,32 @@ odm/lib64/vendor.qti.gnss-service.so
 
 # Context hub (CHRE) - the binary ships in vendor; stock starts it from odm.
 odm/etc/init/android.hardware.contexthub-service.qmi.rc
+
+# MiTEE (Xiaomi TEE in the oemvm Gunyah VM): VM manager, proxy and images
+odm/firmware_oemvm/oemvm/boot/oemvm.elf
+odm/firmware_oemvm/oemvm/oemvm.dtbo
+vendor/bin/avf_qcvm_manager
+vendor/bin/vendor.qti.qtvm.proxyclient-service;MAKE_COPY_RULE_ONLY
+# The proxy is Rust: ship stock's matching dylib set as plain copies (no ABI
+# across rustc versions, and soong can't model these prebuilts).
+vendor/lib64/libaho_corasick.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libandroid_logger.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libanyhow.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libbinder_rs.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libbitflags.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libenv_filter.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/liblibc.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/liblog_rust.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/liblogger.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libmemchr.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libnix.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libregex.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libregex_syntax.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/librustutils.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libstd.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libvendor_qti_AvfQcvmManager_V1.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/lib64/libzerocopy.dylib.so;MAKE_COPY_RULE_ONLY
+vendor/etc/avf/early_vms_oem_vm.xml
+vendor/etc/init/avf_qcvm_manager.rc
+vendor/etc/init/vendor.qti.qtvm.proxyclient-service.rc
+vendor/etc/vintf/manifest/avf_qcvm_manager.xml
