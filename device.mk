@@ -60,8 +60,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/properties/odm_GL.prop:$(TARGET_COPY_OUT_ODM)/etc/odm_GL.prop
 
 # Updater: OTA feed (zips on SourceForge), see github.com/AlexZorzi/songyuan-ota
+ifeq ($(wildcard vendor/extras/evolution.mk),)
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     lineage.updater.uri=https://raw.githubusercontent.com/AlexZorzi/songyuan-ota/main/{device}.json
+endif
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
