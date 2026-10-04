@@ -63,6 +63,9 @@ PRODUCT_COPY_FILES += \
 ifeq ($(wildcard vendor/extras/evolution.mk),)
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     lineage.updater.uri=https://raw.githubusercontent.com/AlexZorzi/songyuan-ota/main/{device}.json
+else
+PRODUCT_PACKAGES += \
+    EvolutionUpdaterOverlaySongyuan
 endif
 
 # Soong namespaces
