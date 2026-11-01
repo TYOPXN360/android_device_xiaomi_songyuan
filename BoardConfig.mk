@@ -7,7 +7,7 @@
 DEVICE_PATH := device/xiaomi/songyuan
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
-KERNEL_RELEASE := 6.12.69-android16-6-g0d80ee00f747-ab15461283-4k
+KERNEL_RELEASE := 6.12.69-android16-6-g0a1dc0413ec7-ab16271006-4k
 
 # Inherit from sm8650-common
 include device/xiaomi/sm8850-common/BoardConfigCommon.mk
