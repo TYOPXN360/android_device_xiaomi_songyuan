@@ -1267,7 +1267,7 @@ odm/lib64/libmicamera_hal_core.so
 odm/lib64/libmicamera_hal_policy.so
 odm/lib64/libmicamGlobalPool.so
 odm/lib64/libminikin.xiaomi.so
-odm/lib64/libMiPhotoFilter.so
+odm/lib64/libMiPhotoFilter.so;DISABLE_CHECKELF
 odm/lib64/libmlremosaicengine.so
 odm/lib64/libmmcamera_bestats.so
 odm/lib64/libmmcamera_cac.so
