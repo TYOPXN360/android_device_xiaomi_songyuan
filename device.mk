@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2026 The Android Open Source Project
 #
@@ -10,7 +9,7 @@
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
 
-# Inherit from sm8650-common
+# Inherit from sm8850-common
 $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 
 # Get non-open-source specific aspects
@@ -52,7 +51,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-euiccgoogle.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-euiccgoogle.xml
-
 
 # Properties
 PRODUCT_COPY_FILES += \
@@ -105,3 +103,16 @@ PRODUCT_PACKAGES += \
     SettingsOverlaySongyuan \
     SystemUIResSongyuan
 
+# ---------------------------------------------------------
+# Kernel modules (vendor_dlkm & system_dlkm)
+# ---------------------------------------------------------
+KERNEL_PATH := $(LOCAL_PATH)-kernel
+KERNEL_RELEASE := 6.12.69-android16-6-g0a1dc0413ec7-ab16271006-4k
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm_flatten/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/flatten/lib/modules) \
+    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/$(KERNEL_RELEASE))
+# Prebuilt kernel binary for boot.img
+PRODUCT_COPY_FILES += \
+    device/xiaomi/songyuan-kernel/kernel:kernel

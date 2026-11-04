@@ -7,9 +7,7 @@
 DEVICE_PATH := device/xiaomi/songyuan
 KERNEL_PATH := $(DEVICE_PATH)-kernel
 
-KERNEL_RELEASE := 6.12.69-android16-6-g0a1dc0413ec7-ab16271006-4k
-
-# Inherit from sm8650-common
+# Inherit from sm8850-common
 include device/xiaomi/sm8850-common/BoardConfigCommon.mk
 
 # NFC (ST54L). Our own manifest, not the stock odm one: that also declares
@@ -26,27 +24,16 @@ TARGET_SCREEN_DENSITY := 420
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 
+# Prebuilt Kernel
 TARGET_NO_KERNEL_OVERRIDE := true
-# Kernel headers: no kernel source is published for songyuan, so ship the QTI
-# UAPI headers (IPA) that in-tree code needs. This assignment feeds the
-# prebuilt_kernel_includes genrule, but cc.go reads the same name with Getenv,
-# which a makefile cannot set (export is rejected by the build system). So it
-# must ALSO be exported in the shell, or libipanat fails on linux/msm_ipa.h:
-#   export TARGET_PREBUILT_KERNEL_HEADERS=device/xiaomi/songyuan-kernel/kernel-headers.tar.gz
-TARGET_PREBUILT_KERNEL_HEADERS := $(KERNEL_PATH)/kernel-headers.tar.gz
-PRODUCT_COPY_FILES += \
-	$(KERNEL_PATH)/kernel:kernel
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/kernel
 
-# Kernel modules
-BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load))
-BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery))
-BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_dlkm/modules.load))
-
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_dlkm/,$(TARGET_COPY_OUT_VENDOR_DLKM)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/vendor_ramdisk/,$(TARGET_COPY_OUT_VENDOR_RAMDISK)/lib/modules) \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm_flatten/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/flatten/lib/modules) \
-    $(call find-copy-subdir-files,*,$(KERNEL_PATH)/system_dlkm/,$(TARGET_COPY_OUT_SYSTEM_DLKM)/lib/modules/$(KERNEL_RELEASE))
+# Kernel headers
+TARGET_BOARD_KERNEL_HEADERS := device/xiaomi/songyuan-kernel/kernel-headers
+# Kernel modules for vendor_boot ramdisk (开机与进入 Recovery 的核心驱动)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(wildcard $(KERNEL_PATH)/vendor_ramdisk/*.ko)
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load 2>/dev/null))
+BOARD_VENDOR_RAMDISK_RECOVERY_KERNEL_MODULES_LOAD := $(strip $(shell cat $(KERNEL_PATH)/vendor_ramdisk/modules.load.recovery 2>/dev/null))
 
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
