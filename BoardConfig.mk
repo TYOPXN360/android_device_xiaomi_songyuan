@@ -6,6 +6,7 @@
 
 DEVICE_PATH := device/xiaomi/songyuan
 KERNEL_PATH := $(DEVICE_PATH)-kernel
+KERNEL_DIAGNOSTIC_FINGERPRINT := songyuan:$(PLATFORM_VERSION)/$(BUILD_ID):$(TARGET_BUILD_VARIANT)
 
 # Inherit from sm8850-common
 include device/xiaomi/sm8850-common/BoardConfigCommon.mk
