@@ -1364,6 +1364,7 @@ odm/firmware/pq_global_00000000.bin
 # Display (virtual display service)
 odm/lib64/libfcsam.so
 odm/lib64/libframemaster.so
+odm/lib64/vendor.xiaomi.hardware.framemaster-V1-ndk.so
 odm/lib64/libmiam.so;FIX_SONAME
 odm/lib64/libnvticcontroller.so
 odm/lib64/libtouchreport_alg_fts.so;FIX_SONAME
@@ -1724,12 +1725,12 @@ mi_ext/product/etc/permissions/privapp-permissions-miext.xml:product/etc/permiss
 
 # GNSS - the QTI AIDL GNSS HAL lives in odm on songyuan, not vendor. Without it
 # nothing registers android.hardware.gnss.IGnss/default and there is no GPS.
-odm/bin/hw/android.hardware.gnss-aidl-service-qti
+odm/bin/hw/android.hardware.gnss-aidl-service-qti;MAKE_COPY_RULE_ONLY
 odm/etc/init/android.hardware.gnss-aidl-service-qti.rc
-odm/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
-odm/etc/vintf/manifest/vendor.qti.gnss-service.xml
-odm/lib64/vendor.qti.gnss-V8-ndk.so
-odm/lib64/vendor.qti.gnss-service.so
+odm/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml;EXTRACT_ONLY
+odm/etc/vintf/manifest/vendor.qti.gnss-service.xml;EXTRACT_ONLY
+odm/lib64/vendor.qti.gnss-V8-ndk.so;MAKE_COPY_RULE_ONLY
+odm/lib64/vendor.qti.gnss-service.so;MAKE_COPY_RULE_ONLY
 
 # Context hub (CHRE) - the binary ships in vendor; stock starts it from odm.
 odm/etc/init/android.hardware.contexthub-service.qmi.rc
