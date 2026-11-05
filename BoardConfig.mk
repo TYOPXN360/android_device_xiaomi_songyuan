@@ -17,7 +17,9 @@ include device/xiaomi/sm8850-common/BoardConfigCommon.mk
 # secure_element-service.qti already provides.
 ODM_MANIFEST_FILES := \
     $(DEVICE_PATH)/configs/vintf/android.hardware.contexthub-service.qmi.xml \
-    $(DEVICE_PATH)/configs/vintf/nfc-service-st.xml
+    $(DEVICE_PATH)/configs/vintf/nfc-service-st.xml \
+    vendor/xiaomi/songyuan/proprietary/odm/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml \
+    vendor/xiaomi/songyuan/proprietary/odm/etc/vintf/manifest/vendor.qti.gnss-service.xml
 
 # Display
 TARGET_SCREEN_DENSITY := 420
