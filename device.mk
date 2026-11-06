@@ -15,6 +15,10 @@ PRODUCT_COPY_FILES += \
 # Inherit from sm8650-common
 $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 
+# The common product's speaker module is the international blob; the device
+# copy above is the matching OS4 implementation for this RM configuration.
+PRODUCT_PACKAGES := $(filter-out libdev_speaker,$(PRODUCT_PACKAGES))
+
 # Device-specific proprietary ODM blobs (audio firmware, sensors, and tuning).
 $(call inherit-product, vendor/xiaomi/songyuan/songyuan-vendor.mk)
 
