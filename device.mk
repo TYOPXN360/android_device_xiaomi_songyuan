@@ -17,6 +17,12 @@ $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 # Device-specific proprietary ODM blobs (audio firmware, sensors, and tuning).
 $(call inherit-product, vendor/xiaomi/songyuan/songyuan-vendor.mk)
 
+# Camera/sensor protobuf ABI: the China OS4 camera core requires
+# sns_shkcam_config, which the common international blob does not export.
+PRODUCT_PACKAGES := $(filter-out libsensinghubapi-prop,$(PRODUCT_PACKAGES))
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/camera/libsensinghubapi-prop.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libsensinghubapi-prop.so
+
 # The Xiaomi sensor service resolves its sub-HAL list from ODM on this device.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_ODM)/etc/sensors/hals.conf
