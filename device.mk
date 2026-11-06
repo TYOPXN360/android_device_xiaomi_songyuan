@@ -13,8 +13,6 @@ PRODUCT_COPY_FILES += \
 # Inherit from sm8650-common
 $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 
-# Get non-open-source specific aspects
-$(call inherit-product, vendor/xiaomi/songyuan/songyuan-vendor.mk)
 
 # Camera
 PRODUCT_PACKAGES += \

@@ -30,4 +30,7 @@ PRODUCT_BRAND := POCO
 PRODUCT_MODEL := POCO F9 Ultra
 PRODUCT_MANUFACTURER := xiaomi
 
-BUILD_FINGERPRINT := POCO/songyuan_eea/songyuan:16/BQ2A.260225.001-BP2A.250705.008/OS3.0.305.0.WGNEUXM:user/release-keys
+# Songyuan uses the ST54L NFC controller. Remove NXP NFC packages and copy
+# rules after all inherited products have been evaluated.
+PRODUCT_PACKAGES := $(filter-out android.hardware.nfc2-service.nxp android.hardware.nqnfc-service.nxp nqnfcinfo nfc2-service-nxp.xml,$(PRODUCT_PACKAGES))
+PRODUCT_COPY_FILES := $(filter-out vendor/xiaomi/sm8850-common/proprietary/odm/etc/init/nfc2-service-nxp.rc:odm/etc/init/nfc2-service-nxp.rc,$(PRODUCT_COPY_FILES))
