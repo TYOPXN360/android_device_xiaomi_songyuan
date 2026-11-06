@@ -13,6 +13,12 @@ PRODUCT_COPY_FILES += \
 # Inherit from sm8650-common
 $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 
+# Device-specific proprietary ODM blobs (audio firmware, sensors, and tuning).
+$(call inherit-product, vendor/xiaomi/songyuan/songyuan-vendor.mk)
+
+# The Xiaomi sensor service resolves its sub-HAL list from ODM on this device.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_ODM)/etc/sensors/hals.conf
 
 # Camera
 PRODUCT_PACKAGES += \
