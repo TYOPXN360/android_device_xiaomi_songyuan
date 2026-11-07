@@ -1371,6 +1371,9 @@ odm/lib64/libtouchreport_alg_fts.so;FIX_SONAME
 
 # Displayfeature (configs)
 odm/etc/df_default.xml
+odm/etc/mdss_dsi_songyuan_42_0d_0a_dsc_cmd_mi.xml
+odm/etc/setting.xml
+odm/etc/scene_temp.xml
 odm/etc/display/B_Com_Gary_Gain.csv
 odm/etc/display/G_Com_Gary_Gain.csv
 odm/etc/display/R_Com_Gary_Gain.csv
@@ -1625,9 +1628,6 @@ odm/etc/disp0/mdss_dsi_songyuan_42_0d_0a_dsc_cmd/mi_gc_0.txt
 odm/etc/disp0/mdss_dsi_songyuan_42_0d_0a_dsc_cmd/mi_gc_1.txt
 odm/etc/disp0/mdss_dsi_songyuan_42_0d_0a_dsc_cmd/mi_gc_2.txt
 odm/etc/disp0/mdss_dsi_songyuan_42_0d_0a_dsc_cmd/mi_gc_3.txt
-odm/etc/display/B_Com_Gary_Gain_mdss_dsi_songyuan_42_0d_0a_dsc_cmd.csv
-odm/etc/display/G_Com_Gary_Gain_mdss_dsi_songyuan_42_0d_0a_dsc_cmd.csv
-odm/etc/display/R_Com_Gary_Gain_mdss_dsi_songyuan_42_0d_0a_dsc_cmd.csv
 odm/etc/display/ltm_config_xiaomi_songyuan_42_0d_0a_cmd_mode_dsc_dsi_panel.xml
 odm/etc/display/mdss_dsi_songyuan_42_0d_0a_dsc_cmd_bl.json
 odm/etc/display/qdcm_calib_data_xiaomi_songyuan_42_0d_0a_cmd_mode_dsc_dsi_panel.json

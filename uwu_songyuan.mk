@@ -26,9 +26,9 @@ endif
 ## Device identifier
 PRODUCT_DEVICE := songyuan
 PRODUCT_NAME := uwu_songyuan
-PRODUCT_BRAND := POCO
-PRODUCT_MODEL := POCO F9 Ultra
-PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_BRAND := Redmi
+PRODUCT_MODEL := Redmi K100 Pro Max
+PRODUCT_MANUFACTURER := Xiaomi
 
 # Songyuan uses the ST54L NFC controller. Remove NXP NFC packages and copy
 # rules after all inherited products have been evaluated.
