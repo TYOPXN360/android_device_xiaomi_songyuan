@@ -1779,3 +1779,20 @@ odm/mitee/ta/66147267-5b44-4aa3-bd734138c7fab03a.ta
 odm/mitee/ta/a13339be-7082-4d2d-bf83a53e4687a635.ta
 odm/mitee/ta/a3ba6512-6e0e-4065-93165e4a7d04ca08.ta
 vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so
+
+# Battery Anti-Aging configuration
+odm/etc/charger/BAA_config_common.json
+odm/etc/charger/BAA_config_songyuan.json
+
+# Display calibration (China OS4 panel data)
+odm/etc/display/sm8850_sr_1x_y1280x720.dlc
+odm/etc/display/sm8850_sr_1x_y544x960.dlc
+odm/etc/display/sm8850_sr_1x_y720x1280.dlc
+odm/etc/display/sm8850_sr_1x_y960x544.dlc
+odm/etc/display/sm8850_sr_2x_y1280x720.dlc
+odm/etc/display/sm8850_sr_2x_y544x960.dlc
+odm/etc/display/sm8850_sr_2x_y720x1280.dlc
+odm/etc/display/sm8850_sr_2x_y960x544.dlc
+odm/etc/display/sm8850_sr_3x_y384x640.dlc
+odm/etc/display/sm8850_sr_3x_y640x384.dlc
+odm/etc/display/ui_service_cloud_config.xml
