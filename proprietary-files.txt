@@ -1797,6 +1797,32 @@ odm/etc/display/sm8850_sr_3x_y384x640.dlc
 odm/etc/display/sm8850_sr_3x_y640x384.dlc
 odm/etc/display/ui_service_cloud_config.xml
 
+# Dependencies of the HALs below.
+vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
+vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
+odm/lib64/vendor.hardware.vibratorCL.impl.so
+
+# These /odm HALs were not tracked before, so the services never made it into
+# the image even though the stock build starts them. Each one ships a binary,
+# its init script and a VINTF manifest entry; all three are needed for the
+# service to be registered and started.
+odm/bin/hw/vendor.qti.hardware.lights.service
+odm/etc/init/vendor.qti.hardware.lights.service.rc
+odm/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
+odm/bin/hw/vendor.xiaomi.hardware.seaaudio-service
+odm/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
+odm/etc/init/vendor.xiaomi.hardware.seaaudio.rc
+odm/etc/vintf/manifest/vendor.xiaomi.hardware.seaaudio.xml
+odm/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+odm/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc
+odm/etc/vintf/manifest/vendor.xiaomi.hardware.vibratorfeature.service.xml
+odm/bin/hw/vendor.xiaomi.hardware.authsecretd
+odm/lib64/vendor.xiaomi.hardware.miauthsecretd-V1-ndk.so
+odm/etc/init/vendor.xiaomi.hardware.authsecretd.rc
+odm/etc/vintf/manifest/vendor.xiaomi.hardware.miauthsecretd.xml
+odm/bin/hw/dvs-aidl-service
+odm/etc/init/dvs-aidl-service.rc
+odm/etc/vintf/manifest/dvs-aidl-service.xml
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
