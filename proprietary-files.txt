@@ -1265,7 +1265,7 @@ odm/lib64/libmicamera_hal_core.so
 odm/lib64/libmicamera_hal_policy.so
 odm/lib64/libmicamGlobalPool.so
 odm/lib64/libminikin.xiaomi.so
-odm/lib64/libMiPhotoFilter.so
+odm/lib64/libMiPhotoFilter.so;DISABLE_CHECKELF
 odm/lib64/libmlremosaicengine.so
 odm/lib64/libmmcamera_bestats.so
 odm/lib64/libmmcamera_cac.so
@@ -1320,6 +1320,11 @@ odm/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so;DISABLE_DEPS
 odm/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-impl.so
 vendor/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-impl.so
+# /odm/bin/hw camera HALs link against bgservice and the odm linker namespace
+# does not search /system_ext/lib64, so ship a second copy there. The module
+# suffix keeps the two apart, both still install under their original names.
+odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-ndk.so;MODULE_SUFFIX=_odm
+odm/lib64/vendor.xiaomi.hardware.bgservice@1.0.so;MODULE_SUFFIX=_odm
 system_ext/lib/vendor.xiaomi.hardware.aidlbgservice-V1-ndk.so
 system_ext/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-ndk.so
 vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
