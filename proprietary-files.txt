@@ -1793,9 +1793,9 @@ odm/etc/display/sm8850_sr_3x_y640x384.dlc
 odm/etc/display/ui_service_cloud_config.xml
 
 
-# Not present in the China stock dump (China stock has no eSIM stack and ships the contexthub service binary only):
-# - system_ext/priv-app/MiLiteRTServiceStub/lib/arm64/libQnnHtpV81Skel.so
-# - system_ext/priv-app/MiLiteRTServiceStub/lib/arm64/libQnnSystem.so
+# Not present in the China stock dump. The China build has no eSIM stack at
+# all and ships the contexthub service binary without its rc file, so these
+# entries are skipped. Checked against every partition of OS4.0.5.0.XGNCNXM:
 # - mi_ext/product/priv-app/EuiccGoogle/EuiccGoogle.apk
 # - mi_ext/product/priv-app/MIUIEsimLPA/MIUIEsimLPA.apk
 # - mi_ext/product/etc/permissions/privapp-permissions-miext.xml
