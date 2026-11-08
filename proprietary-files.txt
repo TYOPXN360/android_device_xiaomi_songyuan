@@ -1802,13 +1802,14 @@ vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
 vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
 odm/lib64/vendor.hardware.vibratorCL.impl.so
 
+# android.hardware.light is built from aidl/light in sm8850-common, so the
+# stock odm lights service is deliberately not extracted here: both declare
+# ILights/default and VINTF rejects the duplicate.
+#
 # These /odm HALs were not tracked before, so the services never made it into
 # the image even though the stock build starts them. Each one ships a binary,
 # its init script and a VINTF manifest entry; all three are needed for the
 # service to be registered and started.
-odm/bin/hw/vendor.qti.hardware.lights.service
-odm/etc/init/vendor.qti.hardware.lights.service.rc
-odm/etc/vintf/manifest/vendor.qti.hardware.lights.service.xml
 odm/bin/hw/vendor.xiaomi.hardware.seaaudio-service
 odm/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
 odm/etc/init/vendor.xiaomi.hardware.seaaudio.rc
