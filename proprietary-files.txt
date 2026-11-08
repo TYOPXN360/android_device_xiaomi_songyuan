@@ -1293,7 +1293,7 @@ odm/lib64/libqshcamera_sensinghubapi.so
 odm/lib64/libqshcamera.so
 vendor/lib64/libRecordCNN.so
 vendor/lib64/libSEESalt.so
-product/app/SogouIME/lib/arm64/libshadowhook.so
+odm/lib64/libshadowhook.so
 odm/lib64/libsiminputgenutil.so
 odm/lib64/libsimulation.so
 odm/lib64/libSNPE.so
