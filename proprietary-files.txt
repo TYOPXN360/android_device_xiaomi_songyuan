@@ -2192,7 +2192,6 @@ system_ext/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
 
 
 # The camera and stats libraries link OpenCL.
-vendor/lib64/libOpenCL.so
 
 
 # Needed by the weaver implementation.
@@ -2205,6 +2204,10 @@ vendor/lib64/libRecordCNN.so
 
 # GNSS AIDL HAL implementation.
 vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+
+
+# eSE utilities, needed by libidprovision.
+vendor/lib64/hw/libEseUtils.so
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2486,7 +2489,7 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.gainmapPostProc.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.gpu.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.heifedit.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.jpegrAggr.so
-odm/lib64/camera/plugins/com.xiaomi.plugin.losslessjpeg.so
+odm/lib64/camera/plugins/com.xiaomi.plugin.losslessjpeg.so;DISABLE_DEPS
 odm/lib64/camera/plugins/com.xiaomi.plugin.memcpyCustomization.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.mialgoanchor.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.mialgooptics.so
@@ -2494,7 +2497,7 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.misv2.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.misv3.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.movieeffect.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.pack2unpack.so
-odm/lib64/camera/plugins/com.xiaomi.plugin.pixman.so
+odm/lib64/camera/plugins/com.xiaomi.plugin.pixman.so;DISABLE_DEPS
 odm/lib64/camera/plugins/com.xiaomi.plugin.portraitrepair.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.singlebokehpreview.so
 odm/lib64/camera/plugins/com.xiaomi.plugin.spc.so
@@ -2847,10 +2850,10 @@ odm/lib64/libmialgo_ai_vision.so
 odm/lib64/libmialgoengine_custom.so
 odm/lib64/libmialgoengine.so
 odm/lib64/libmicamera_adapter.so
-odm/lib64/libmicamera_aidl_device_adaptor.so
-odm/lib64/libmicamera_aidl_device.so
-odm/lib64/libmicamera_aidl_provider.so
-odm/lib64/libmicamera_aidl_utils.so
+odm/lib64/libmicamera_aidl_device_adaptor.so;DISABLE_DEPS
+odm/lib64/libmicamera_aidl_device.so;DISABLE_DEPS
+odm/lib64/libmicamera_aidl_provider.so;DISABLE_DEPS
+odm/lib64/libmicamera_aidl_utils.so;DISABLE_DEPS
 odm/lib64/libmicamera_fps_checker.so
 odm/lib64/libmicamera_hal_core.so
 odm/lib64/libmicamera_hal_policy.so
@@ -2964,3 +2967,6 @@ odm/lib64/libQnnHtpV75Stub.so
 odm/lib64/libQnnHtpV79Stub.so
 odm/lib64/libQnnHtpV81Stub.so
 odm/lib64/libQnnTFLiteDelegate.so
+
+# Name matches a module AOSP builds from source.
+# - vendor/lib64/libOpenCL.so
