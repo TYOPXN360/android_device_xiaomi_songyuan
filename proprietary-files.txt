@@ -134,8 +134,6 @@ odm/etc/audio/sku_canoe/adsp_sleep_monitor.conf
 odm/firmware/fastboot.bin
 
 # Camera
-odm/bin/hw/misensor_camera
-odm/bin/hw/vendor.qti.camera.provider-service_64
 
 # Camera Resources
 odm/etc/camera/af_class_all.dlc
@@ -708,7 +706,6 @@ odm/lib64/camera/fdconfigsecure.bin
 odm/lib64/camera/fdconfigvideo.bin
 odm/lib64/camera/fdconfigvideolite.bin
 odm/lib64/camera/qfdserviceconfig.bin
-vendor/lib64/libdng_sdk.so:vendor/lib64/libdng_sdk-songyuan.so;FIX_SONAME
 # /odm/bin/hw camera HALs link against bgservice and the odm linker namespace
 # does not search /system_ext/lib64, so ship a second copy there. The module
 # suffix keeps the two apart, both still install under their original names.
@@ -762,7 +759,6 @@ odm/etc/me_config.xml
 system_ext/framework/xiaomi-modem-common.jar
 
 # Kernel
-vendor/bin/init.kernel.post_boot-memory.sh
 
 # NFC
 
@@ -806,7 +802,6 @@ odm/etc/sensors/config/sns_transport_ppe.json
 odm/etc/cit_param_config.json
 
 # Touchfeature
-odm/bin/toucheventcheck
 
 # Touchscreen
 odm/firmware/focaltech_ts_fw_songyuan.bin
@@ -862,7 +857,6 @@ odm/firmware/8_ringTone3_P_RTP.bin:vendor/etc/vibrator/primitive_effect_8.bin
 odm/firmware/9_ringTone4_P_RTP.bin:vendor/etc/vibrator/primitive_effect_9.bin
 
 # NFC (ST54L). songyuan uses ST, sm8850-common ships the NXP configs.
-odm/bin/hw/android.hardware.nfc-service-st
 odm/etc/init/nfc-service-st.rc
 odm/etc/libnfc-hal-st.conf
 odm/etc/st54l_conf.txt
@@ -1056,7 +1050,6 @@ odm/etc/init/init.boled.lightsensor.rc
 
 # GNSS - the QTI AIDL GNSS HAL lives in odm on songyuan, not vendor. Without it
 # nothing registers android.hardware.gnss.IGnss/default and there is no GPS.
-odm/bin/hw/android.hardware.gnss-aidl-service-qti;MAKE_COPY_RULE_ONLY
 odm/etc/init/android.hardware.gnss-aidl-service-qti.rc
 odm/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml;EXTRACT_ONLY
 odm/etc/vintf/manifest/vendor.qti.gnss-service.xml;EXTRACT_ONLY
@@ -1066,8 +1059,6 @@ odm/etc/vintf/manifest/vendor.qti.gnss-service.xml;EXTRACT_ONLY
 # MiTEE (Xiaomi TEE in the oemvm Gunyah VM): VM manager, proxy and images
 odm/firmware_oemvm/oemvm/boot/oemvm.elf
 odm/firmware_oemvm/oemvm/oemvm.dtbo
-vendor/bin/avf_qcvm_manager
-vendor/bin/vendor.qti.qtvm.proxyclient-service;MAKE_COPY_RULE_ONLY
 # The proxy is Rust: ship stock's matching dylib set as plain copies (no ABI
 # across rustc versions, and soong can't model these prebuilts).
 vendor/etc/avf/early_vms_oem_vm.xml
@@ -1076,11 +1067,8 @@ vendor/etc/init/vendor.qti.qtvm.proxyclient-service.rc
 vendor/etc/vintf/manifest/avf_qcvm_manager.xml
 
 # MiTEE userspace
-odm/bin/mitee_info
-odm/bin/tee-supplicant
 
 # Face
-odm/bin/hw/mifaced
 odm/etc/vintf/manifest/android.hardware.biometrics.face-v4.xml
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.aon.auth.xml
 odm/mitee/ta/655a4b46-cd77-11ea-aafbf382a6988e7b.ta
@@ -1115,16 +1103,12 @@ odm/etc/display/ui_service_cloud_config.xml
 # the image even though the stock build starts them. Each one ships a binary,
 # its init script and a VINTF manifest entry; all three are needed for the
 # service to be registered and started.
-odm/bin/hw/vendor.xiaomi.hardware.seaaudio-service
 odm/etc/init/vendor.xiaomi.hardware.seaaudio.rc
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.seaaudio.xml
-odm/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
 odm/etc/init/vendor.xiaomi.hardware.vibratorfeature.service.rc
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.vibratorfeature.service.xml
-odm/bin/hw/vendor.xiaomi.hardware.authsecretd
 odm/etc/init/vendor.xiaomi.hardware.authsecretd.rc
 odm/etc/vintf/manifest/vendor.xiaomi.hardware.miauthsecretd.xml
-odm/bin/hw/dvs-aidl-service
 odm/etc/init/dvs-aidl-service.rc
 odm/etc/vintf/manifest/dvs-aidl-service.xml
 
@@ -1335,7 +1319,6 @@ odm/etc/rsmc/product-para/capability.json
 odm/etc/rsmc/product-para/product.json
 odm/etc/rsmc/product-para/rf.json
 odm/etc/rsmc/system_config/smc_cfg.json
-odm/etc/selinux/odm_mac_permissions.xml
 odm/etc/sensors/config/qsh_camera_common_sm8845.json
 odm/etc/sensors/config/qsh_camera_imx688_6.json
 odm/etc/sensors/config/qsh_camera_imx688_6_actuator.json
@@ -2144,7 +2127,7 @@ odm/lib64/libscorr.so
 odm/lib64/libsecid.so
 odm/lib64/libsfeShiftExtrapolation.so
 odm/lib64/libsnpe_config.so
-odm/lib64/libswEF.so
+odm/lib64/libswEF.so;DISABLE_DEPS
 odm/lib64/libswregistrationalgo.so
 odm/lib64/libtfestriping.so
 odm/lib64/libtical.so
@@ -2168,45 +2151,41 @@ odm/vendor/etc/videobox.json
 
 
 # Needed by mifaced, mitee_info and touch_report_debug.
-odm/lib64/libmiface.so
-odm/lib64/libteecli.so
-odm/lib64/libtouchreport.so
 
 
 # Needed by libpendant_wrapper.
-odm/lib64/libMiPhotoFilter.so;DISABLE_CHECKELF
 
 
 # Needed by the weaver and miweaver implementations.
-vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
-odm/lib64/vendor.xiaomi.hardware.miauthsecretd-V1-ndk.so
 
 
 # Needed by vendor.xiaomi.hardware.seaaudio-service.
-system_ext/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
 
 
 # Needed by the camera remosaic and stats libraries.
-vendor/lib64/libOpenCL.so
 
 
 # Companion of libQnnTFLiteDelegate.
 
 
 # Companion of libQnnTFLiteDelegate.
-system_ext/lib64/litert/libqnn_delegate_jni.so
 
 
 # Needed by the intentaware impl.
-system_ext/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-ndk.so
 
 
 # Needed by libcamxcommonutils.
-system_ext/lib64/libcameraopt.so
 
 
 # Needed by libcameraopt.
 system_ext/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
+
+
+# The odm copy carries the _odm suffix; this one keeps the plain
+# module name that the libMi* libraries link against.
+
+
+# The odm camera and media libraries link libc++_shared directly.
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2228,9 +2207,6 @@ system_ext/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
 odm/etc/audio/sku_canoe/mixer_paths_canoe_mtp.xml
 odm/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml
 vendor/etc/audio/sku_canoe/mcs_defs_canoe_mtp.xml
-odm/etc/audio/audio_module_config_primary.xml
-odm/etc/audio/sku_canoe_qssi/audio_policy_configuration.xml
-odm/etc/audio_effects_config.xml
 
 # These are all symlinks to audio-factory-test, which is already
 # tracked; the factory test aliases are not needed.
@@ -2269,11 +2245,56 @@ odm/bin/test-nusensors
 
 # Same module name as an AOSP target that already produces this
 # file, so the prebuilt would define it twice.
-vendor/lib64/libcamera2ndk_vendor.so
-odm/etc/libnfc-nci.conf
 
 # The build already installs a library with this name; keeping the
 # prebuilt would define the module twice.
+
+# hardware/nxp/nfc builds this.
+
+# Layouts extract-utils cannot map to a package rule.
+# - odm/overlay/FrameworksResTarget_Vendor.apk
+
+# - odm/etc/audio/audio_module_config_primary.xml
+
+# Name matches a module AOSP builds from source.
+# - vendor/lib64/libdng_sdk.so
+# - odm/etc/selinux/odm_mac_permissions.xml
+# - odm/etc/audio/sku_canoe_qssi/audio_policy_configuration.xml
+# - odm/etc/audio_effects_config.xml
+# - vendor/lib64/libcamera2ndk_vendor.so
+# - odm/etc/libnfc-nci.conf
+
+# Camera interface libraries that pull an older camera.device
+# revision than the platform builds.
+# - vendor/lib64/vendor.xiaomi.hardware.camera.injection-client.so
+# - vendor/lib64/vendor.xiaomi.hardware.camera.injection-service.so
+# - vendor/lib64/vendor.xiaomi.hardware.camera.injection-V1-ndk.so
+
+odm/bin/hw/misensor_camera
+odm/bin/hw/vendor.qti.camera.provider-service_64
+# - vendor/bin/init.kernel.post_boot-memory.sh
+odm/bin/toucheventcheck
+odm/bin/hw/android.hardware.nfc-service-st
+odm/bin/hw/android.hardware.gnss-aidl-service-qti
+# - vendor/bin/avf_qcvm_manager
+# - vendor/bin/vendor.qti.qtvm.proxyclient-service
+odm/bin/mitee_info
+odm/bin/tee-supplicant
+odm/bin/hw/mifaced
+odm/bin/hw/vendor.xiaomi.hardware.seaaudio-service
+odm/bin/hw/vendor.xiaomi.hardware.vibratorfeature.service
+odm/bin/hw/vendor.xiaomi.hardware.authsecretd
+odm/bin/hw/dvs-aidl-service
+odm/lib64/libmiface.so
+odm/lib64/libteecli.so
+odm/lib64/libtouchreport.so
+odm/lib64/libMiPhotoFilter.so
+# - vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
+odm/lib64/vendor.xiaomi.hardware.miauthsecretd-V1-ndk.so
+system_ext/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
+system_ext/lib64/litert/libqnn_delegate_jni.so
+system_ext/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-ndk.so
+system_ext/lib64/libcameraopt.so
 odm/lib/rfsa/adsp/libcomputation_optics_hexagon_skel.so
 odm/lib/rfsa/adsp/libaisupernight_ellc_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_ai_process_cdsp_skel.so
@@ -2281,14 +2302,14 @@ odm/lib/rfsa/adsp/libmialgo_ai_process_ops_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_hdsr_sr_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_supernight_capture_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_tracker_cdsp_skel.so
-vendor/lib/rfsa/adsp/chre_qsh_shim.so
+# - vendor/lib/rfsa/adsp/chre_qsh_shim.so
 odm/lib/rfsa/adsp/libadsp_jpege_skel.so
 odm/lib/rfsa/adsp/libarc_htp_driver_skel.so
 odm/lib/rfsa/adsp/libCalculator_skel.so
 odm/lib/rfsa/adsp/libdsp_streamer_binning.so
 odm/lib/rfsa/adsp/libhme_dsp_skel.so
 odm/lib/rfsa/adsp/libmctfengine_skel.so
-vendor/lib/rfsa/adsp/libmi_vvc_lpf_skel.so
+# - vendor/lib/rfsa/adsp/libmi_vvc_lpf_skel.so
 odm/lib/rfsa/adsp/libmialgo_basic_cdsp_skel.so
 odm/lib/rfsa/adsp/libmialgo_rfs_cdsp_skel.so
 odm/lib/rfsa/adsp/libmlawbpostproc_dsp_skel.so
@@ -2299,28 +2320,28 @@ odm/lib/rfsa/adsp/libQnnSaver.so
 odm/lib64/rfs/dsp/libapn_dsp_skel.so
 odm/lib64/rfs/dsp/libbitml_nsp_81na_skel.so
 odm/lib64/rfs/dsp/libbitml_nsp_skel.so
-vendor/lib64/rfs/dsp/libDLDPP_skel.so
-vendor/lib64/rfs/dsp/libdspCV_skel.so
-vendor/lib64/rfs/dsp/libfastcvadsp.so
-vendor/lib64/rfs/dsp/libfastcvdsp_skel.so
+# - vendor/lib64/rfs/dsp/libDLDPP_skel.so
+# - vendor/lib64/rfs/dsp/libdspCV_skel.so
+# - vendor/lib64/rfs/dsp/libfastcvadsp.so
+# - vendor/lib64/rfs/dsp/libfastcvdsp_skel.so
 odm/lib64/rfs/dsp/libffthelper_skel.so
 odm/lib64/rfs/dsp/libhdr_skel.so
-vendor/lib64/rfs/dsp/libHexlpQnnHtp.so
-vendor/lib64/rfs/dsp/libHexlpQnnSystem.so
-vendor/lib64/rfs/dsp/libnsp_ipc_cdsp_skel.so
-vendor/lib64/rfs/dsp/libnspextensioncopyprovider.so
-vendor/lib64/rfs/dsp/libnspextensionfrcprovider.so
-vendor/lib64/rfs/dsp/libnspextensiongenericqnnprovider.so
-vendor/lib64/rfs/dsp/libnspextensionsuperresolutionprovider.so
+# - vendor/lib64/rfs/dsp/libHexlpQnnHtp.so
+# - vendor/lib64/rfs/dsp/libHexlpQnnSystem.so
+# - vendor/lib64/rfs/dsp/libnsp_ipc_cdsp_skel.so
+# - vendor/lib64/rfs/dsp/libnspextensioncopyprovider.so
+# - vendor/lib64/rfs/dsp/libnspextensionfrcprovider.so
+# - vendor/lib64/rfs/dsp/libnspextensiongenericqnnprovider.so
+# - vendor/lib64/rfs/dsp/libnspextensionsuperresolutionprovider.so
 odm/lib64/rfs/dsp/libqsegnetengine_dsp_skel.so
-vendor/lib64/rfs/dsp/libscveT2T_skel.so
-vendor/lib64/rfs/dsp/libsvDescMatch_dsp.so
-vendor/lib64/rfs/dsp/libsvDescMatchImpl_dsp_skel.so
-vendor/lib64/rfs/dsp/libsvdsp.so
-vendor/lib64/rfs/dsp/libvpp_frc.so
-vendor/lib64/rfs/dsp/libvpp_gfrc_networks.so
-vendor/lib64/rfs/dsp/libvpp_svc_skel.so
-vendor/lib64/rfs/dsp/libVppFrcQnnHtp.so
+# - vendor/lib64/rfs/dsp/libscveT2T_skel.so
+# - vendor/lib64/rfs/dsp/libsvDescMatch_dsp.so
+# - vendor/lib64/rfs/dsp/libsvDescMatchImpl_dsp_skel.so
+# - vendor/lib64/rfs/dsp/libsvdsp.so
+# - vendor/lib64/rfs/dsp/libvpp_frc.so
+# - vendor/lib64/rfs/dsp/libvpp_gfrc_networks.so
+# - vendor/lib64/rfs/dsp/libvpp_svc_skel.so
+# - vendor/lib64/rfs/dsp/libVppFrcQnnHtp.so
 odm/lib64/camera/libchxlogicalcameratable.so
 odm/lib64/com.xiaomi.capability.bokeh.adapter.so
 odm/lib64/com.xiaomi.capability.bokeh.so
@@ -2416,7 +2437,7 @@ odm/lib64/camera/components/com.xiaomi.stats.pdlib.so
 odm/lib64/camera/components/libawbcore.so
 odm/lib64/camera/components/libmiaec.so
 odm/lib64/camera/components/libstats.afalgo.so
-odm/lib64/camera/components/libstats.aipdlib.so;DISABLE_DEPS
+odm/lib64/camera/components/libstats.aipdlib.so
 odm/lib64/camera/components/libstats.pdlib.so
 odm/lib64/camera/dynamicplugins/com.xiaomi.plugin.arcsoftAP.so
 odm/lib64/camera/dynamicplugins/com.xiaomi.plugin.arcsoftPT.so
@@ -2715,7 +2736,7 @@ odm/lib64/immunesystem.db.sqlite3.so
 odm/lib64/libAF.so
 odm/lib64/libaidenoiser.so
 odm/lib64/libaidenoiserv2.so
-vendor/lib64/libAIHDIcon.so
+# - vendor/lib64/libAIHDIcon.so
 odm/lib64/libaisr.so
 odm/lib64/libauto_focus_stark.so
 odm/lib64/libbitmlengine.so
@@ -2723,7 +2744,7 @@ odm/lib64/libbitmlenginev2.so
 odm/lib64/libcamera.xiaomi.catchlog.so
 odm/lib64/libcamerabuffer.so
 odm/lib64/libcameraheif.so
-vendor/lib64/libcameraobserver.so
+# - vendor/lib64/libcameraobserver.so
 odm/lib64/libcameraopt_stub.so
 odm/lib64/libcamlog.so
 odm/lib64/libcamxasyncdumpmanager.so
@@ -2803,7 +2824,7 @@ odm/lib64/libmctfengine_stub.so
 odm/lib64/libmetatagwrapper.so
 odm/lib64/libmfGhostDetection.so
 odm/lib64/libmialgo_ai_vision.so
-vendor/lib64/libmialgo.so
+# - vendor/lib64/libmialgo.so
 odm/lib64/libmialgoengine_custom.so
 odm/lib64/libmialgoengine.so
 odm/lib64/libmicamera_adapter.so
@@ -2828,19 +2849,19 @@ odm/lib64/libofestriping.so
 odm/lib64/libofflinedebugdata.so
 odm/lib64/libois_channel_stub.so
 odm/lib64/liboischannel.so
-vendor/lib64/libopencl_loader.so
-vendor/lib64/libopencv_core.so
-vendor/lib64/libopencv_imgproc.so
+# - vendor/lib64/libopencl_loader.so
+# - vendor/lib64/libopencv_core.so
+# - vendor/lib64/libopencv_imgproc.so
 odm/lib64/libopencv.so
 odm/lib64/libopencv3a.so
 odm/lib64/libPlatformValidatorShared.so
 odm/lib64/libpostprocinfo.so
-vendor/lib64/libproj_qmot_tracker.so
-vendor/lib64/libproj_sot.so
+# - vendor/lib64/libproj_qmot_tracker.so
+# - vendor/lib64/libproj_sot.so
 odm/lib64/libqsegnet.so
 odm/lib64/libqshcamera_sensinghubapi.so
 odm/lib64/libqshcamera.so
-vendor/lib64/libRecordCNN.so
+# - vendor/lib64/libRecordCNN.so
 odm/lib64/libshadowhook.so
 odm/lib64/libsiminputgenutil.so
 odm/lib64/libsimulation.so
@@ -2860,7 +2881,7 @@ odm/lib64/libSnpeHtpV79CalculatorStub.so
 odm/lib64/libSnpeHtpV79Stub.so
 odm/lib64/libSnpeHtpV81CalculatorStub.so
 odm/lib64/libSnpeHtpV81Stub.so
-vendor/lib64/libSNPESample.so
+# - vendor/lib64/libSNPESample.so
 odm/lib64/libubifocus.so
 odm/lib64/vendor.qti.hardware.camera.aon-service-impl.so
 odm/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so
@@ -2868,19 +2889,16 @@ odm/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.bgservice@1.0.so
-vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
-vendor/lib64/vendor.xiaomi.hardware.aon.auth-V1-ndk.so
+# - vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
+# - vendor/lib64/vendor.xiaomi.hardware.aon.auth-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.bgservice@1.0-impl.so
-vendor/lib64/vendor.xiaomi.hardware.camera.injection-client.so
-vendor/lib64/vendor.xiaomi.hardware.camera.injection-service.so
-vendor/lib64/vendor.xiaomi.hardware.camera.injection-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.camera.mivimessage-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.camera.mivimessage-V1-ndk.so
-vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-impl.so
-vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-V1-ndk.so
+# - vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-impl.so
+# - vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.postprocservice-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.postprocservice-V1-ndk.so
-vendor/lib64/vendor.xiaomi.sensor.camera-V1-ndk.so
+# - vendor/lib64/vendor.xiaomi.sensor.camera-V1-ndk.so
 odm/lib64/libfcsam.so
 odm/lib64/libframemaster.so
 odm/lib64/libmiam.so
@@ -2906,12 +2924,12 @@ odm/lib64/libtriplecam_optical_zoom_fusion.so
 odm/lib64/libtriplecam_video_optical_zoom.so
 odm/lib64/libtouchreport_alg_2.so
 odm/lib64/vendor.novatek.hardware.visdisplaysrv-V1-ndk.so
-vendor/lib64/libheichal_qcom.so
+# - vendor/lib64/libheichal_qcom.so
 odm/lib64/liblegendmsg.so
 odm/lib64/vendor.qti.gnss-V8-ndk.so
 odm/lib64/vendor.qti.gnss-service.so
-vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so
-vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
+# - vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so
+# - vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
 odm/lib64/vendor.hardware.vibratorCL.impl.so
 odm/lib/rfsa/adsp/libQnnHtpV81Skel.so
 odm/lib/rfsa/adsp/libQnnSystem.so
@@ -2927,9 +2945,3 @@ odm/lib64/libQnnHtpV75Stub.so
 odm/lib64/libQnnHtpV79Stub.so
 odm/lib64/libQnnHtpV81Stub.so
 odm/lib64/libQnnTFLiteDelegate.so
-
-# hardware/nxp/nfc builds this.
-odm/lib64/nfc_nci_nxp_snxxx_v2.so
-
-# Layouts extract-utils cannot map to a package rule.
-# - odm/overlay/FrameworksResTarget_Vendor.apk
