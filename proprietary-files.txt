@@ -1268,7 +1268,6 @@ odm/lib64/libmmcamera_mfnr_t4.so
 odm/lib64/libmmcamera_mfnr.so
 odm/lib64/libmmcamera_pdpc.so
 odm/lib64/libmpbase.so
-vendor/lib64/libnova.so
 odm/lib64/libofestriping.so
 odm/lib64/libofflinedebugdata.so
 odm/lib64/libois_channel_stub.so
@@ -1286,7 +1285,6 @@ odm/lib64/libqsegnet.so
 odm/lib64/libqshcamera_sensinghubapi.so
 odm/lib64/libqshcamera.so
 vendor/lib64/libRecordCNN.so
-vendor/lib64/libSEESalt.so
 odm/lib64/libshadowhook.so
 odm/lib64/libsiminputgenutil.so
 odm/lib64/libsimulation.so
@@ -1308,7 +1306,6 @@ odm/lib64/libSnpeHtpV81CalculatorStub.so;FIX_SONAME
 odm/lib64/libSnpeHtpV81Stub.so
 vendor/lib64/libSNPESample.so
 odm/lib64/libubifocus.so
-vendor/lib64/libUSTANative.so
 odm/lib64/vendor.qti.hardware.camera.aon-service-impl.so
 odm/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so;DISABLE_DEPS
 odm/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-impl.so
@@ -1736,23 +1733,6 @@ vendor/bin/avf_qcvm_manager
 vendor/bin/vendor.qti.qtvm.proxyclient-service;MAKE_COPY_RULE_ONLY
 # The proxy is Rust: ship stock's matching dylib set as plain copies (no ABI
 # across rustc versions, and soong can't model these prebuilts).
-vendor/lib64/libaho_corasick.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libandroid_logger.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libanyhow.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libbinder_rs.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libbitflags.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libenv_filter.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/liblibc.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/liblog_rust.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/liblogger.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libmemchr.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libnix.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libregex.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libregex_syntax.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/librustutils.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libstd.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libvendor_qti_AvfQcvmManager_V1.dylib.so;MAKE_COPY_RULE_ONLY
-vendor/lib64/libzerocopy.dylib.so;MAKE_COPY_RULE_ONLY
 vendor/etc/avf/early_vms_oem_vm.xml
 vendor/etc/init/avf_qcvm_manager.rc
 vendor/etc/init/vendor.qti.qtvm.proxyclient-service.rc
@@ -1825,7 +1805,6 @@ odm/etc/vintf/manifest/dvs-aidl-service.xml
 odm/bin/aecxsimulator
 odm/bin/audio-factory-test
 odm/bin/camera-preamble.json
-odm/bin/capture.sh
 odm/bin/capture_VI_TX.sh
 odm/bin/capture_VI_TX_P.sh
 odm/bin/capture_usbmic.sh
@@ -1851,25 +1830,15 @@ odm/bin/mtd_check
 odm/bin/mtd_keysoter
 odm/bin/nvt_test
 odm/bin/nvt_test_hal
-odm/bin/playback.sh
 odm/bin/playback_usbheadset.sh
-odm/bin/setup_auxmic2headphone.sh
-odm/bin/setup_backmic2headphone.sh
-odm/bin/setup_headsetmic2headphone.sh
-odm/bin/setup_mainmic2headphone.sh
 odm/bin/setup_mic2usbheadset.sh
 odm/bin/setup_rcv2backmic.sh
 odm/bin/setup_rcv2backmic_arithmetic.sh
 odm/bin/setup_rcv2topmic.sh
 odm/bin/setup_rcv2topmic_arithmetic.sh
-odm/bin/setup_topmic2headphone.sh
-odm/bin/teardown_loopback.sh
 odm/bin/test-aon
-odm/bin/test-nusensors
 odm/bin/tidad
 odm/bin/touch_report_debug
-odm/bin/typec_capture_headset.sh
-odm/bin/typec_playback_headset.sh
 odm/bin/vib_cal
 odm/bin/vsimd
 odm/bin/xiaomi_ir_test
@@ -2864,7 +2833,7 @@ odm/lib64/libjc_keymint-thales.so
 odm/lib64/libjc_keymint_transport-thales.so
 odm/lib64/libjc_weaver_transport.so
 odm/lib64/libjpege.so
-odm/lib64/libkeyboxcheck_relyon_system.so
+odm/lib64/libkeyboxcheck_relyon_system.so;DISABLE_DEPS
 odm/lib64/libkeymint_empty-nxp.so
 odm/lib64/libkeymint_empty-thales.so
 odm/lib64/libmfec.so
@@ -2878,7 +2847,7 @@ odm/lib64/libmiweaver_empty.so
 odm/lib64/libmmfp.so
 odm/lib64/libmseccam.so
 odm/lib64/libmt.so
-odm/lib64/libmt_keysoter.so
+odm/lib64/libmt_keysoter.so;DISABLE_DEPS
 odm/lib64/libpendant_wrapper.so
 odm/lib64/libqll.so
 odm/lib64/libqllengine.so
@@ -2905,6 +2874,8 @@ odm/lib64/vendor.xiaomi.hardware.seccam-V1-ndk.so
 odm/priv-app/GFDelmarSetting/GFDelmarSetting.apk
 odm/vendor/etc/videoCodecCapability.json
 odm/vendor/etc/videobox.json
+
+
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2934,3 +2905,38 @@ odm/vendor/etc/videobox.json
 # - odm/etc/audio/sku_canoe_qssi/audio_policy_configuration.xml
 # - odm/etc/audio/vts/audio_module_config_primary.xml
 # - odm/etc/audio_effects_config.xml
+
+# These are all symlinks to audio-factory-test, which is already
+# tracked; the factory test aliases are not needed.
+# - odm/bin/capture.sh
+# - odm/bin/playback.sh
+# - odm/bin/setup_auxmic2headphone.sh
+# - odm/bin/setup_backmic2headphone.sh
+# - odm/bin/setup_headsetmic2headphone.sh
+# - odm/bin/setup_mainmic2headphone.sh
+# - odm/bin/setup_topmic2headphone.sh
+# - odm/bin/teardown_loopback.sh
+# - odm/bin/typec_capture_headset.sh
+# - odm/bin/typec_playback_headset.sh
+
+# macOS dylibs, useless on Android.
+# - vendor/lib64/libaho_corasick.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libandroid_logger.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libanyhow.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libbinder_rs.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libbitflags.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libenv_filter.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/liblibc.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/liblog_rust.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/liblogger.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libmemchr.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libnix.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libregex.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libregex_syntax.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/librustutils.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libstd.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libvendor_qti_AvfQcvmManager_V1.dylib.so;MAKE_COPY_RULE_ONLY
+# - vendor/lib64/libzerocopy.dylib.so;MAKE_COPY_RULE_ONLY
+
+# Built from AOSP sources; a prebuilt of the same name collides.
+# - odm/bin/test-nusensors

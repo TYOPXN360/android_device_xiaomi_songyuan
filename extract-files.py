@@ -183,8 +183,24 @@ blob_fixups: blob_fixups_user_type = {
         .call(blob_fixup_gme_ois_read),
     'odm/lib64/libmiface.so': blob_fixup()
         .call(blob_fixup_miface_weak_nonsecure),
+    # libswEF links both allocator V1 and V2; Soong refuses a module that
+    # depends on two versions of the same AIDL interface, so fold V1 onto V2.
+    'odm/lib64/libkeyboxcheck_relyon_system.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.security.keymint-V4-ndk.so',
+            'android.hardware.security.keymint-V5-ndk.so',
+        ),
+    'odm/lib64/libmt_keysoter.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.security.keymint-V4-ndk.so',
+            'android.hardware.security.keymint-V5-ndk.so',
+        ),
+    'odm/lib64/libswEF.so': blob_fixup()
+        .replace_needed(
+            'android.hardware.graphics.allocator-V1-ndk.so',
+            'android.hardware.graphics.allocator-V2-ndk.so',
+        ),
 }  # fmt: skip
-
 module = ExtractUtilsModule(
     'songyuan',
     'xiaomi',
