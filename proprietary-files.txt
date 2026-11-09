@@ -2187,6 +2187,25 @@ system_ext/lib64/vendor.xiaomi.hardware.quickcamera-V1-ndk.so
 
 # The odm camera and media libraries link libc++_shared directly.
 
+
+# DSP RPC, needed by the SNPE stubs.
+
+
+# The camera and stats libraries link OpenCL.
+vendor/lib64/libOpenCL.so
+
+
+# Needed by the weaver implementation.
+vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
+
+
+# Dependencies pulled in by the HALs and test tools.
+vendor/lib64/libRecordCNN.so
+
+
+# GNSS AIDL HAL implementation.
+vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
 # entries are skipped. Checked against every partition of OS4.0.5.0.XGNCNXM:
