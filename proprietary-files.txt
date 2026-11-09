@@ -145,7 +145,6 @@ odm/lib/rfsa/adsp/libQnnHexagonSkel_dspApp.so
 odm/lib/rfsa/adsp/libQnnHtpV81.so
 odm/lib/rfsa/adsp/libQnnNetRunDirectV81Skel.so
 odm/lib/rfsa/adsp/libQnnSaver.so
-odm/lib/rfsa/adsp/libSnpeHtpV81Skel.so
 odm/lib64/rfs/dsp/libapn_dsp_skel.so
 odm/lib64/rfs/dsp/libbitml_nsp_81na_skel.so
 odm/lib64/rfs/dsp/libbitml_nsp_skel.so
@@ -177,11 +176,6 @@ odm/firmware/tfa98xx.cnt
 
 # Audio (Config)
 odm/etc/audio/sku_canoe/adsp_sleep_monitor.conf
-odm/etc/audio/sku_canoe/mixer_paths_canoe_mtp.xml
-odm/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml
-vendor/etc/audio/sku_canoe/mcs_defs_canoe_mtp.xml
-vendor/etc/audio/sku_canoe/mixer_paths_canoe_mtp.xml
-vendor/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml
 
 # fastbootd firmware data
 odm/firmware/fastboot.bin
@@ -1884,12 +1878,8 @@ odm/etc/MispeedMapConfig.json
 odm/etc/TcnRecordmodel_8850_w8a16pcq_qnn2_33_0_nhwc.minn
 odm/etc/UniperfHintMapsConfig.xml
 odm/etc/audio/audio_effects_config.json
-odm/etc/audio/audio_module_config_primary.xml
 odm/etc/audio/mis_audioled_configs.bin
-odm/etc/audio/sku_canoe_qssi/audio_policy_configuration.xml
 odm/etc/audio/trackefx_config.xml
-odm/etc/audio/vts/audio_module_config_primary.xml
-odm/etc/audio_effects_config.xml
 odm/etc/audio_game_effect_items.xml
 odm/etc/audio_policy_engine_configuration_mi.xml
 odm/etc/audio_policy_engine_default_stream_volumes_mi.xml
@@ -2905,7 +2895,6 @@ odm/lib64/libvideoml.so
 odm/lib64/libvsim.so
 odm/lib64/libweaver_empty-nxp.so
 odm/lib64/libweaver_empty-thales.so
-odm/lib64/nfc_nci_nxp_snxxx_v2.so
 odm/lib64/vendor.xiaomi.hardware.micrtk-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.mikeybag-impl.so
 odm/lib64/vendor.xiaomi.hardware.misauth-V1-ndk.so
@@ -2929,3 +2918,19 @@ odm/vendor/etc/videobox.json
 # rro_packages entries that extract-utils cannot infer, so they are
 # left out of the generated makefiles.
 # - odm/overlay/FrameworksResTarget_Vendor.apk
+
+# nfc_nci_nxp_snxxx_v2 is built from hardware/nxp/nfc/snxxx,
+# so the odm copy would clash with the source module.
+# - odm/lib64/nfc_nci_nxp_snxxx_v2.so
+
+# Audio configs and VINTF manifests that hardware/qcom-caf/sm8850
+# builds from source; shipping the vendor copies clashes with them.
+# - odm/etc/audio/sku_canoe/mixer_paths_canoe_mtp.xml
+# - odm/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml
+# - vendor/etc/audio/sku_canoe/mcs_defs_canoe_mtp.xml
+# - vendor/etc/audio/sku_canoe/mixer_paths_canoe_mtp.xml
+# - vendor/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml
+# - odm/etc/audio/audio_module_config_primary.xml
+# - odm/etc/audio/sku_canoe_qssi/audio_policy_configuration.xml
+# - odm/etc/audio/vts/audio_module_config_primary.xml
+# - odm/etc/audio_effects_config.xml
