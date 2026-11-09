@@ -2265,7 +2265,6 @@ vendor/etc/audio/sku_canoe/mcs_defs_canoe_mtp.xml
 # - vendor/lib64/libzerocopy.dylib.so;MAKE_COPY_RULE_ONLY
 
 # Built from AOSP sources; a prebuilt of the same name collides.
-odm/bin/test-nusensors
 
 # Same module name as an AOSP target that already produces this
 # file, so the prebuilt would define it twice.
