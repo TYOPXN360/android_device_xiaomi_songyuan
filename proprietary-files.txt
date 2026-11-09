@@ -2203,10 +2203,13 @@ vendor/lib64/libRecordCNN.so
 
 
 # GNSS AIDL HAL implementation.
-vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
 
 
 # eSE utilities, needed by libidprovision.
+
+
+# GNSS AIDL HAL implementation, a vendor binary AOSP does not build.
+vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2969,3 +2972,6 @@ odm/lib64/libQnnTFLiteDelegate.so
 
 # Name matches a module AOSP builds from source.
 # - vendor/lib64/libOpenCL.so
+
+# Interface libraries AOSP generates from the AIDL/HIDL definitions
+# in hardware/interfaces, frameworks and system.
