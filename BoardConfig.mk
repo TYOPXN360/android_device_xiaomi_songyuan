@@ -34,6 +34,11 @@ TARGET_NO_KERNEL_OVERRIDE := true
 # must ALSO be exported in the shell, or libipanat fails on linux/msm_ipa.h:
 #   export TARGET_PREBUILT_KERNEL_HEADERS=device/xiaomi/songyuan-kernel/kernel-headers.tar.gz
 TARGET_PREBUILT_KERNEL_HEADERS := $(KERNEL_PATH)/kernel-headers.tar.gz
+# The GKI tree under kernel/xiaomi/songyuan only carries generic UAPI, so the
+# legacy headers module cannot supply the Qualcomm headers (linux/msm_audio.h,
+# linux/msm_ion.h and the display ones). Point the cc modules at the prebuilt
+# archive instead, which is the only place those headers come from.
+SOONG_KERNEL_MODULE := prebuilt_kernel_includes
 PRODUCT_COPY_FILES += \
 	$(KERNEL_PATH)/kernel:kernel
 
