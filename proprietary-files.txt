@@ -2100,7 +2100,7 @@ odm/lib64/libhta_hexagon_runtime_qnn.so
 odm/lib64/libhta_hexagon_runtime_snpe.so
 odm/lib64/libhybrid.so
 odm/lib64/libiccprofile.so
-odm/lib64/libidprovision.so
+odm/lib64/libidprovision.so;DISABLE_DEPS
 odm/lib64/libjc_keymint-thales.so
 odm/lib64/libjc_keymint_transport-thales.so
 odm/lib64/libjc_weaver_transport.so
@@ -2207,7 +2207,6 @@ vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
 
 
 # eSE utilities, needed by libidprovision.
-vendor/lib64/hw/libEseUtils.so
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2906,7 +2905,7 @@ odm/lib64/libSnpeHtpV81Stub.so
 # - vendor/lib64/libSNPESample.so
 odm/lib64/libubifocus.so
 odm/lib64/vendor.qti.hardware.camera.aon-service-impl.so
-odm/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so
+odm/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so;DISABLE_DEPS
 odm/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-impl.so
 odm/lib64/vendor.xiaomi.hardware.aidlbgservice-V1-ndk.so
