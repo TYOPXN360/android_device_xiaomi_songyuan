@@ -1141,6 +1141,7 @@ odm/bin/mseccam
 odm/bin/mtd
 odm/bin/mtd_check
 odm/bin/mtd_keysoter
+vendor/lib64/vendor.xiaomi.hardware.aidl.mtkeysoter-V1-ndk.so
 odm/bin/nvt_test
 odm/bin/nvt_test_hal
 odm/bin/playback_usbheadset.sh
@@ -2200,6 +2201,7 @@ vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
 
 # Dependencies pulled in by the HALs and test tools.
 vendor/lib64/libRecordCNN.so
+vendor/lib64/libnova.so
 
 
 # GNSS AIDL HAL implementation.
@@ -2209,7 +2211,41 @@ vendor/lib64/libRecordCNN.so
 
 
 # GNSS AIDL HAL implementation, a vendor binary AOSP does not build.
-vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+# - vendor/lib64/hw/android.hardware.gnss-aidl-impl-qti.so
+
+
+vendor/lib64/vendor.xiaomi.hardware.mikeybag-V1-ndk.so
+vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so
+system/lib64/vendor.xiaomi.hardware.misight-V1-ndk.so
+
+
+vendor/lib64/vendor.xiaomi.hardware.aidl.tidaservice-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.aon-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.aon.auth-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.fingerprintextension-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.mfidoca-V1-ndk.so
+system_ext/lib64/vendor.xiaomi.hardware.misys.core-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hardware.vsimapp-V1-ndk.so
+vendor/lib64/vendor.xiaomi.hw.touchfeature-V1-ndk.so
+vendor/lib64/vendor.xiaomi.sensor.camera-V1-ndk.so
+
+
+vendor/lib64/com.fingerprints.extension3-V1-ndk.so
+vendor/lib64/com.fingerprints.fpc.extension-V1-ndk.so
+vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
+
+
+# - vendor/lib64/libdng_sdk.so
+vendor/lib64/libcamera2ndk_vendor.so
+vendor/lib64/libcameraobserver.so
+vendor/lib64/vendor.xiaomi.hardware.camera.synthetic-impl.so
+vendor/lib64/libheichal_qcom.so
+
+
+system_ext/lib64/libopencv_core.so
+system_ext/lib64/libopencv_imgproc.so
+system_ext/lib64/libopencv_imgcodecs.so
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
@@ -2315,7 +2351,7 @@ odm/lib64/libMiPhotoFilter.so
 # - vendor/lib64/vendor.xiaomi.hardware.oldcredential-V1-ndk.so
 odm/lib64/vendor.xiaomi.hardware.miauthsecretd-V1-ndk.so
 system_ext/lib64/vendor.xiaomi.hardware.seaaudio-V1-ndk.so
-system_ext/lib64/litert/libqnn_delegate_jni.so
+# - system_ext/lib64/litert/libqnn_delegate_jni.so
 system_ext/lib64/vendor.xiaomi.hardware.aidl.intentaware-V1-ndk.so
 system_ext/lib64/libcameraopt.so
 odm/lib/rfsa/adsp/libcomputation_optics_hexagon_skel.so
@@ -2880,7 +2916,7 @@ odm/lib64/libopencv3a.so
 odm/lib64/libPlatformValidatorShared.so
 odm/lib64/libpostprocinfo.so
 # - vendor/lib64/libproj_qmot_tracker.so
-# - vendor/lib64/libproj_sot.so
+vendor/lib64/libproj_sot.so
 odm/lib64/libqsegnet.so
 odm/lib64/libqshcamera_sensinghubapi.so
 odm/lib64/libqshcamera.so
@@ -2951,23 +2987,22 @@ odm/lib64/vendor.novatek.hardware.visdisplaysrv-V1-ndk.so
 odm/lib64/liblegendmsg.so
 odm/lib64/vendor.qti.gnss-V8-ndk.so
 odm/lib64/vendor.qti.gnss-service.so
-# - vendor/lib64/vendor.xiaomi.sensor.aonframe-V1-ndk.so
 # - vendor/lib64/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk.so
 odm/lib64/vendor.hardware.vibratorCL.impl.so
-odm/lib/rfsa/adsp/libQnnHtpV81Skel.so
-odm/lib/rfsa/adsp/libQnnSystem.so
-odm/lib64/libQnnDsp.so
-odm/lib64/libQnnDspV66Stub.so
-odm/lib64/libQnnGpu.so
-odm/lib64/libQnnHtp.so
-odm/lib64/libQnnHtpPrepare.so
-odm/lib64/libQnnHtpV68Stub.so
-odm/lib64/libQnnHtpV69Stub.so
-odm/lib64/libQnnHtpV73Stub.so
-odm/lib64/libQnnHtpV75Stub.so
-odm/lib64/libQnnHtpV79Stub.so
-odm/lib64/libQnnHtpV81Stub.so
-odm/lib64/libQnnTFLiteDelegate.so
+odm/lib/rfsa/adsp/libQnnHtpV81Skel.so;MODULE_SUFFIX=_odm
+odm/lib/rfsa/adsp/libQnnSystem.so;MODULE_SUFFIX=_odm
+# - odm/lib64/libQnnDsp.so
+odm/lib64/libQnnDspV66Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnGpu.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtp.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpPrepare.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV68Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV69Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV73Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV75Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV79Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnHtpV81Stub.so;MODULE_SUFFIX=_odm
+odm/lib64/libQnnTFLiteDelegate.so;MODULE_SUFFIX=_odm
 
 # Name matches a module AOSP builds from source.
 # - vendor/lib64/libOpenCL.so
