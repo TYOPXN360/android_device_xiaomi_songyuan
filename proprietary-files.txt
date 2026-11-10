@@ -1152,14 +1152,11 @@ odm/lib64/com.xiaomi.stubv1.camx.so
 odm/lib64/com.xiaomi.stubv1.chi.so
 odm/lib64/com.xiaomi.xmdevprotection.tokmd.so
 odm/lib64/com.xiaomi.xmxmessage2center.so
-odm/lib64/hw/camera.qcom.core.so
-vendor/lib64/hw/camera.qcom.core.so;SYMLINK=odm/lib64/hw/camera.qcom.core.so
+odm/lib64/hw/camera.qcom.core.so;SYMLINK=vendor/lib64/hw/camera.qcom.core.so
 odm/lib64/hw/camera.qcom.sm8850.so
-odm/lib64/hw/camera.qcom.so
-vendor/lib64/hw/camera.qcom.so;SYMLINK=odm/lib64/hw/camera.qcom.so
+odm/lib64/hw/camera.qcom.so;SYMLINK=vendor/lib64/hw/camera.qcom.so
 odm/lib64/hw/com.qti.chi.offline.so
-odm/lib64/hw/com.qti.chi.override.so
-vendor/lib64/hw/com.qti.chi.override.so;SYMLINK=odm/lib64/hw/com.qti.chi.override.so
+odm/lib64/hw/com.qti.chi.override.so;SYMLINK=vendor/lib64/hw/com.qti.chi.override.so
 odm/lib64/immunesystem.db.sqlite3.so
 odm/lib64/libAF.so
 odm/lib64/libaidenoiser.so
