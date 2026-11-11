@@ -949,7 +949,7 @@ odm/lib64/camera/com.qti.tuned.default.canoe.bin
 # Camera (vendor)
 vendor/etc/camera/cameraopt_perf.json
 vendor/etc/camera/cameraopt_vendor.json
-odm/lib64/camera/bitmlconfig.bin
+odm/lib64/camera/bitmlconfig.bin;SYMLINK=vendor/lib64/camera/bitmlconfig.bin
 odm/lib64/camera/camxfl115indices.bin
 odm/lib64/camera/camxfl300v1indices.bin
 odm/lib64/camera/camxfl300v2indices.bin
@@ -958,8 +958,8 @@ odm/lib64/camera/chifdnodeconfig.bin
 odm/lib64/camera/com.qti.chi.featurecompatibilityspecification.sm7750.bin
 odm/lib64/camera/com.qti.chi.featurecompatibilityspecification.sm8750.bin
 odm/lib64/camera/com.qti.chi.featurecompatibilityspecification.sm8850.bin
-odm/lib64/camera/com.qti.ofe.profiledb.default.bin
-odm/lib64/camera/com.qti.ofe.profiledb.sm8850.bin
+odm/lib64/camera/com.qti.ofe.profiledb.default.bin;SYMLINK=vendor/lib64/camera/com.qti.ofe.profiledb.default.bin
+odm/lib64/camera/com.qti.ofe.profiledb.sm8850.bin;SYMLINK=vendor/lib64/camera/com.qti.ofe.profiledb.sm8850.bin
 odm/lib64/camera/com.qti.tuned.default.canoe.bin
 odm/lib64/camera/components/com.mi.node.fd.so
 odm/lib64/camera/components/com.mi.node.mimovie.so
@@ -1078,7 +1078,7 @@ odm/lib64/camera/fdconfigsecure.bin
 odm/lib64/camera/fdconfigvideo.bin
 odm/lib64/camera/fdconfigvideolite.bin
 odm/lib64/camera/libmicamvendorcustom.so
-odm/lib64/camera/qfdserviceconfig.bin
+odm/lib64/camera/qfdserviceconfig.bin;SYMLINK=vendor/lib64/camera/qfdserviceconfig.bin
 odm/lib64/camx.device-impl.so
 odm/lib64/camx.provider-impl.so
 odm/lib64/com.qti.camx.chiiqutils.so
@@ -1686,8 +1686,8 @@ odm/etc/thermal-map-global.conf
 odm/etc/thermal-odm-map.conf
 odm/etc/thermal-region-map.conf
 odm/etc/thermalbreakboostconfig.xml
-odm/lib64/camera/aon_front_a_1.pb
-odm/lib64/camera/aon_rear_a_2.pb
+odm/lib64/camera/aon_front_a_1.pb;SYMLINK=vendor/lib64/camera/aon_front_a_1.pb
+odm/lib64/camera/aon_rear_a_2.pb;SYMLINK=vendor/lib64/camera/aon_rear_a_2.pb
 odm/lib64/camera/com.qti.actuator.songyuan_tele_a_actuator.so
 odm/lib64/camera/com.qti.actuator.songyuan_wide_a_actuator.so
 odm/lib64/camera/com.qti.eeprom.songyuan_front_a_eeprom.so
