@@ -1825,6 +1825,13 @@ odm/bin/hw/dvs-aidl-service
 odm/etc/init/dvs-aidl-service.rc
 odm/etc/vintf/manifest/dvs-aidl-service.xml
 
+
+# AON frame service: the camera HAL reserves sensor/CSIPHY through it.
+odm/bin/hw/miaon_frame
+odm/etc/init/miaon_frame.rc
+odm/etc/vintf/manifest/miaon_frame.xml
+odm/etc/vintf/manifest/vendor.xiaomi.camera.aon-impl.xml
+
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
 # entries are skipped. Checked against every partition of OS4.0.5.0.XGNCNXM:
