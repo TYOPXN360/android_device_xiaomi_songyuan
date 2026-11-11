@@ -1830,7 +1830,7 @@ odm/etc/vintf/manifest/dvs-aidl-service.xml
 odm/bin/hw/miaon_frame
 odm/etc/init/miaon_frame.rc
 odm/etc/vintf/manifest/miaon_frame.xml
-odm/etc/vintf/manifest/vendor.xiaomi.camera.aon-impl.xml
+# - odm/etc/vintf/manifest/vendor.xiaomi.camera.aon-impl.xml
 
 # Not present in the China stock dump. The China build has no eSIM stack at
 # all and ships the contexthub service binary without its rc file, so these
