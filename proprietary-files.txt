@@ -1378,6 +1378,19 @@ odm/etc/df_default.xml
 odm/etc/mdss_dsi_songyuan_42_0d_0a_dsc_cmd_mi.xml
 odm/etc/setting.xml
 odm/etc/scene_temp.xml
+# DQE and the Novatek visual display service. The library was already shipped
+# but without its init script and VINTF manifest the service never starts.
+odm/etc/dqe/ASICPCC.xml
+odm/etc/dqe/ASICPanel.xml
+odm/etc/dqe/ASICScene.xml
+odm/etc/dqe/ICSelfCheckItem.xml
+odm/etc/dqe/NvtFactoryTest.xml
+odm/etc/dqe/parameter_config.ini
+odm/etc/dqe/video_parameter_config.ini
+odm/etc/dqe/whitelist_app.json
+odm/etc/init/vendor.novatek.hardware.visdisplaysrv-service.rc
+odm/etc/video_thumbnail_lut.png
+odm/etc/vintf/manifest/vendor.novatek.hardware.visdisplaysrv.xml
 odm/etc/display/B_Com_Gary_Gain.csv
 odm/etc/display/G_Com_Gary_Gain.csv
 odm/etc/display/R_Com_Gary_Gain.csv
