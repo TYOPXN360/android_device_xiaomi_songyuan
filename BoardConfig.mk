@@ -56,7 +56,14 @@ BOARD_SUPER_PARTITION_SIZE := 16642998272
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 16632512512
 
 # Security
-BOOT_SECURITY_PATCH := 2026-08-01
+# Must be >= the bootloader's security-patch-level, or it refuses the boot chain
+# and the device bounces back to fastboot right after the MI logo (no vibration:
+# init never runs). Check the floor with:
+#   fastboot getvar security-patch-level   -> 2026-10-01 on this device
+# This value is written into the boot image as
+#   com.android.build.boot.security_patch
+# and the stock OS4.0.5.0 boot.img carries exactly 2026-10-01.
+BOOT_SECURITY_PATCH := 2026-10-01
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 
 # Inherit from the proprietary version
