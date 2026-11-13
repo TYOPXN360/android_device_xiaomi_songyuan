@@ -1894,9 +1894,3 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.watermarkV2.so
 vendor/bin/hw/vendor.xiaomi.hardware.dynamiccameraserver
 vendor/etc/bpf/cameraBpfGpl.o
 vendor/etc/external_camera_config.xml
-vendor/lib/libcamxexternalformatutils.so;MODULE_SUFFIX=_vendor
-vendor/lib64/vendor.qti.hardware.camera.aon-V1-ndk.so
-vendor/lib64/vendor.qti.hardware.camera.aon-V2-ndk.so
-vendor/lib64/vendor.qti.hardware.camera.aon-V3-ndk.so
-vendor/lib64/vendor.qti.hardware.camera.offlinecamera-V1-ndk.so
-vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so
