@@ -1288,6 +1288,7 @@ odm/lib64/libopencv.so
 odm/lib64/libopencv3a.so
 odm/lib64/libPlatformValidatorShared.so
 odm/lib64/libpostprocinfo.so
+odm/lib64/libpendant_wrapper.so
 vendor/lib64/libproj_qmot_tracker.so
 vendor/lib64/libproj_sot.so
 odm/lib64/libqsegnet.so
@@ -1896,7 +1897,7 @@ vendor/etc/bpf/cameraBpfGpl.o
 vendor/etc/external_camera_config.xml
 vendor/etc/init/android.hardware.camera.provider-V1-external-service.rc
 vendor/etc/vintf/manifest/android.hardware.camera.provider.external.xml
-vendor/lib/libcamxexternalformatutils.so
+vendor/lib/libcamxexternalformatutils.so;MODULE_SUFFIX=_vendor
 vendor/lib64/android.hardware.camera.device-V1-ndk.so
 vendor/lib64/android.hardware.camera.metadata-V1-ndk.so
 vendor/lib64/android.hardware.camera.provider-V1-external-impl.so
