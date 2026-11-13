@@ -155,3 +155,13 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.audio.laggy.detect.enable=100 \
     bluetooth.device_id.product_id=0x1200 \
     bluetooth.device_id.vendor_id=0x038F
+
+# HDR brightness needs a per-display configuration: DisplayDeviceConfig only
+# takes its high brightness mode data from display_id_<id>.xml, and
+# copyUninitializedValuesFromSecondaryConfig (the default.xml fallback) only
+# carries the density mapping. Stock ships one identical reference file for
+# seven other display ids; this is that file, for our panel, plus the quirk that
+# is required because the SDM backlight path does not advertise
+# DisplayCapability::BRIGHTNESS.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/displayconfig/display_id_4630947002586003091.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630947002586003091.xml
