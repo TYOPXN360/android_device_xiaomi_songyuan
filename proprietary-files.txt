@@ -145,6 +145,8 @@ odm/lib/rfsa/adsp/libQnnHexagonSkel_dspApp.so
 odm/lib/rfsa/adsp/libQnnHtpV81.so
 odm/lib/rfsa/adsp/libQnnNetRunDirectV81Skel.so
 odm/lib/rfsa/adsp/libQnnSaver.so
+odm/lib/rfsa/adsp/libQnnHtpV81Skel.so
+odm/lib/rfsa/adsp/libQnnSystem.so
 odm/lib/rfsa/adsp/libSnpeHtpV81Skel.so
 odm/lib64/rfs/dsp/libapn_dsp_skel.so
 odm/lib64/rfs/dsp/libbitml_nsp_81na_skel.so
