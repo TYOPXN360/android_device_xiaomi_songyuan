@@ -1,23 +1,6 @@
 # SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 
-# MIUI Camera branches its permission flow on ro.product.mod_device: when the
-# value contains "_global" it asks Android for the camera permissions itself,
-# otherwise it launches the HyperOS Security Center permissions dialog, which
-# does not exist here. Stock puts ro.product.mod_device=songyuan in
-# mi_ext/etc/build.prop - a partition this build has no equivalent of - and gets
-# away with it because Security Center is present there.
-#
-# The device tree already carries patches/0001, which forces the same branch by
-# clobbering the flag register in smali. Setting the property is the equivalent
-# without touching the stock-signed APK; only the "_global" substring matters.
-#
-# It has to be set here rather than in a build.prop: Android 12+ does not take
-# ro.product.* keys defined in a partition build.prop, so the copy that landed in
-# /vendor/build.prop was silently ignored and the viewfinder stayed frozen.
-on init
-    setprop ro.product.mod_device songyuan_global
-
 on property:sys.boot_completed=1
     write /sys/class/xm_power/charger/charger_common/reverse_quick_charge 0
 
