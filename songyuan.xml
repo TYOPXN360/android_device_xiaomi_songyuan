@@ -43,9 +43,13 @@
 
   <project name="TYOPXN360/android_device_xiaomi_songyuan-miuicamera" path="device/xiaomi/songyuan-miuicamera" remote="github" revision="refs/heads/test" />
 
-  <!-- ========== Vendor 专有 Blob（从 EvolutionX 成品提取） ========== -->
-  <!-- 大文件按 90MiB 分块存放于 split-blobs/，克隆后需执行：
-         cd vendor/xiaomi/songyuan && ./assemble-blobs.sh -->
+  <!-- ========== Vendor 专有 Blob ========== -->
+  <!-- Extracted from the China stock image OS4.0.7.0.XGNCNXM with
+       extract-files.py; the blobs live in the repository itself, so nothing has
+       to be reassembled after cloning. -->
+  <project name="TYOPXN360/android_vendor_xiaomi_songyuan" path="vendor/xiaomi/songyuan" remote="github" revision="refs/heads/test" />
+  <project name="TYOPXN360/android_vendor_xiaomi_sm8850-common" path="vendor/xiaomi/sm8850-common" remote="github" revision="refs/heads/test" />
+  <project name="TYOPXN360/android_vendor_xiaomi_songyuan-miuicamera" path="vendor/xiaomi/songyuan-miuicamera" remote="github" revision="refs/heads/test" />
   
   <!-- ========== 硬件支持 (Hardware) ========== -->
   <!-- Fork of LineageOS/android_hardware_xiaomi. songyuan-support carries the
