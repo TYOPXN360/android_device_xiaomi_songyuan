@@ -121,3 +121,37 @@ PRODUCT_PACKAGES += \
     SettingsOverlaySongyuan \
     SystemUIResSongyuan
 
+
+# Properties stock keeps in mi_ext/etc/build.prop. mi_ext folds into system_ext
+# on this build, and that channel is the one that actually takes effect: a bare
+# ro.product.* key in a vendor build.prop is silently ignored, verified on
+# device.
+#
+# Deliberately left out: the MIUI version strings (ro.mi.os.version.*,
+# ro.mi.xms.version.incremental, ro.ai.os.version.*, ro.build.version.incremental)
+# which are stock ROM bookkeeping, ro.vendor.build.ab_ota_partitions which this
+# build generates itself, and ro.product.mod_device which the MIUI camera tree
+# owns.
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.miui.build.region=cn \
+    ro.boot.monitor=true \
+    ro.fling.optimize.sf.device=true \
+    ro.mi.os.custfeatureresolve=true \
+    ro.miui.support.system.app.uninstall.v2=true \
+    ro.ai.transparent.sandbox.enabled=true \
+    ro.config.WlanAntTunerPolicy=3 \
+    ro.wifi.tvendor.disable1=true \
+    ro.com.google.clientidbase=android-xiaomi \
+    ro.com.google.clientidbase.ms=android-xiaomi \
+    ro.logd.size.crash=256K \
+    ro.logd.size.events=1M \
+    ro.logd.size.kernel=64K \
+    ro.logd.size.security=64K \
+    persist.sys.power_mode_support=true \
+    persist.sys.pre_startup=true \
+    persist.sys.support_power_seg_bpf_track=true \
+    persist.vendor.camera.gesture.emoji.support=1 \
+    persist.audio.video.large_jpegopt_enable=1 \
+    persist.audio.laggy.detect.enable=100 \
+    bluetooth.device_id.product_id=0x1200 \
+    bluetooth.device_id.vendor_id=0x038F
