@@ -1,2 +1,0 @@
-# Display enhancement switch for the Novatek visual display processor
-user=system seinfo=platform isPrivApp=true name=com.xiaomi.settings.displayenhance domain=displayenhance_app type=system_app_data_file levelFrom=all

@@ -121,7 +121,3 @@ PRODUCT_PACKAGES += \
     SettingsOverlaySongyuan \
     SystemUIResSongyuan
 
-
-# Device settings (AI display enhancement switch for the Novatek PQ chip)
-PRODUCT_PACKAGES += \
-    SongyuanDisplayEnhance

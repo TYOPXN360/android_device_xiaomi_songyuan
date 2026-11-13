@@ -1,3 +1,0 @@
-# Backs the AI display enhancement switch. init owns the triggers that start and
-# stop hal_visdisplaysrv_default when this changes.
-system_internal_prop(disp_enhance_prop)
