@@ -73,3 +73,6 @@ include vendor/xiaomi/songyuan/BoardConfigVendor.mk
 ifneq ($(wildcard vendor/xiaomi/songyuan-miuicamera/BoardConfigVendor.mk),)
 include device/xiaomi/songyuan-miuicamera/BoardConfig.mk
 endif
+
+# Device-specific sepolicy (display enhancement switch)
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Display Enhancement</string>
+
+    <string name="display_enhance_title">AI Display Enhancement</string>
+    <string name="display_enhance_switch_title">Enable AI display enhancement</string>
+    <string name="display_enhance_switch_summary">Runs the Novatek visual display processor, which handles super resolution, motion compensation, SDR to HDR conversion and the 3D LUT for video and games</string>
+    <string name="display_enhance_footer">Turning this off leaves the panel driven by the display processor alone. No reboot required.</string>
+</resources>

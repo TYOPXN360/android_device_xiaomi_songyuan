@@ -1,0 +1,13 @@
+type displayenhance_app, domain, coredomain;
+typeattribute displayenhance_app mlstrustedsubject;
+
+app_domain(displayenhance_app)
+
+allow displayenhance_app activity_service:service_manager find;
+
+allow displayenhance_app system_app_data_file:dir create_dir_perms;
+allow displayenhance_app system_app_data_file:file create_file_perms;
+allow displayenhance_app system_app_data_file:lnk_file create_file_perms;
+
+# The switch only exists to flip this property; init does the rest.
+set_prop(displayenhance_app, disp_enhance_prop)

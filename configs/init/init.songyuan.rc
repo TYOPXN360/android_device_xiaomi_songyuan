@@ -3,3 +3,16 @@
 
 on property:sys.boot_completed=1
     write /sys/class/xm_power/charger/charger_common/reverse_quick_charge 0
+
+# Novatek visual display processor (the AI display enhancement chip).
+#
+# The stock init script starts hal_visdisplaysrv_default unconditionally as part
+# of class hal and the service has no runtime knob of its own, so the Settings
+# switch drives it from here instead: persist.sys.disp_enhance is written by
+# SongyuanDisplayEnhance and these triggers turn the HAL on or off. The property
+# persists, so it is also replayed at boot when init loads the stored values.
+on property:persist.sys.disp_enhance=1
+    start hal_visdisplaysrv_default
+
+on property:persist.sys.disp_enhance=0
+    stop hal_visdisplaysrv_default
