@@ -1,48 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote name="alexzorzi" fetch="https://github.com/AlexZorzi" />
-  <remote name="estkme" fetch="https://github.com/estkme-group" />
-  <remote name="davegamble" fetch="https://github.com/DaveGamble" />
+  <!-- ============================================================ -->
+  <!-- Songyuan 设备树 · LineageOS 24.0 分支                         -->
+  <!--                                                              -->
+  <!-- 硬件平台：Qualcomm SM8850 (Canoe, UM_6_12_FAMILY)             -->
+  <!-- 说明：依赖主 manifest 中定义的 remote="github"。               -->
+  <!-- ============================================================ -->
 
-  <!-- Device -->
-  <project name="android_device_xiaomi_songyuan"
-           path="device/xiaomi/songyuan"
-           remote="alexzorzi"
-           revision="refs/heads/songyuan" />
-  <project name="android_device_xiaomi_sm8850-common"
-           path="device/xiaomi/sm8850-common"
-           remote="alexzorzi"
-           revision="refs/heads/lineage-24.0" />
-  <project name="android_device_xiaomi_songyuan-kernel"
-           path="device/xiaomi/songyuan-kernel"
-           remote="alexzorzi"
-           revision="refs/heads/master" />
-  <project name="android_device_xiaomi_songyuan-miuicamera"
-           path="device/xiaomi/songyuan-miuicamera"
-           remote="alexzorzi"
-           revision="refs/heads/lineage-24.0" />
+  <!-- ========== Qualcomm SM8850 平台底层 ========== -->
+  <!-- QCOM sepolicy for SM8850.
+       Upstream lineage.xml only ships sm8450/sm8550/sm8650/sm8750, so pull the
+       sm8850 branch explicitly. -->
+  <project name="LineageOS/android_device_qcom_sepolicy_vndr" path="device/qcom/sepolicy_vndr/sm8850" remote="github" revision="refs/heads/lineage-24.0-caf-sm8850" />
 
+  <!-- QCOM CAF HALs for SM8850 (LineageOS, lineage-24.0-caf-sm8850) -->
+  <project name="LineageOS/android_vendor_qcom_opensource_agm" path="hardware/qcom-caf/sm8850/audio/agm" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-audio" />
+  <project name="LineageOS/android_vendor_qcom_opensource_audioreach-graphservices" path="hardware/qcom-caf/sm8850/audio/graphservices" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-audio" />
+  <project name="LineageOS/android_vendor_qcom_opensource_arpal-lx" path="hardware/qcom-caf/sm8850/audio/pal" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-audio" />
+  <project name="LineageOS/android_hardware_qcom_audio-ar" path="hardware/qcom-caf/sm8850/audio/primary-hal" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-audio" />
+  
+  <project name="LineageOS/android_vendor_qcom_opensource_data-ipa-cfg-mgr" path="hardware/qcom-caf/sm8850/data-ipa-cfg-mgr" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-vendor" />
+  <project name="LineageOS/android_vendor_qcom_opensource_dataipa" path="hardware/qcom-caf/sm8850/dataipa" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom,kaanapali-vendor" />
+  
+  <project name="LineageOS/android_vendor_qcom_opensource_display-core" path="hardware/qcom-caf/sm8850/display/core" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom" />
+  <project name="LineageOS/android_hardware_qcom_display" path="hardware/qcom-caf/sm8850/display/hal" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom" />
+  <project name="LineageOS/android_vendor_qcom_opensource_display-intf" path="hardware/qcom-caf/sm8850/display/intf" remote="github" revision="lineage-24.0-caf-sm8850" groups="qcom" />
+
+  <!-- hardware/qcom-caf/sm8850 has no entry in lineage.xml at all, so nothing
+       creates its top-level Android.bp. Borrow the shared QSSI pickup file from
+       hardware/qcom-caf/common the same way sm8750 does. -->
+  <extend-project name="LineageOS/android_hardware_qcom-caf_common" dest-path="hardware/qcom-caf/common">
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8850/Android.bp" />
+  </extend-project>
+
+  <!-- ========== Songyuan 设备专用与内核 ========== -->
+  <project name="TYOPXN360/android_device_xiaomi_songyuan" path="device/xiaomi/songyuan" remote="github" revision="refs/heads/test" />
+
+  <project name="TYOPXN360/android_device_xiaomi_sm8850-common" path="device/xiaomi/sm8850-common" remote="github" revision="refs/heads/test" />
+
+  <!-- Fork carries the fixed kernel-headers.tar.gz (usr/include layout + IPA UAPI). -->
+  <project name="TYOPXN360/android_device_xiaomi_songyuan-kernel" path="device/xiaomi/songyuan-kernel" remote="github" revision="refs/heads/test" />
+
+  <project name="TYOPXN360/android_device_xiaomi_songyuan-miuicamera" path="device/xiaomi/songyuan-miuicamera" remote="github" revision="refs/heads/test" />
+
+  <!-- ========== Vendor 专有 Blob（从 EvolutionX 成品提取） ========== -->
+  <!-- 大文件按 90MiB 分块存放于 split-blobs/，克隆后需执行：
+         cd vendor/xiaomi/songyuan && ./assemble-blobs.sh -->
+  
+  <!-- ========== 硬件支持 (Hardware) ========== -->
   <!-- Fork of LineageOS/android_hardware_xiaomi. songyuan-support carries the
        Euicc device mapping and the EsimSwitcher setSimSlotMapping change;
        upstream lineage-24.0 has neither, and syncing to it breaks eSIM. -->
-  <project name="android_hardware_xiaomi"
-           path="hardware/xiaomi"
-           remote="alexzorzi"
-           revision="refs/heads/songyuan-support" />
+  <project name="AlexZorzi/android_hardware_xiaomi" path="hardware/xiaomi" remote="github" revision="refs/heads/songyuan-support" />
 
+  <!-- ========== 特定应用与依赖 (Apps & Submodules) ========== -->
   <!-- OpenEUICC, built from source. Pinned: master moves and this is the
        revision the ROM is verified against. The two submodules are listed
        explicitly because sync-s does not fetch them. -->
-  <project name="openeuicc"
-           path="packages/apps/OpenEUICC"
-           remote="estkme"
-           revision="28aad5790418585059ebdad8b4b0fdbab56dcaa7" />
-  <project name="lpac"
-           path="packages/apps/OpenEUICC/libs/lpac-jni/src/main/jni/lpac"
-           remote="estkme"
-           revision="50cdf15ab40942b00f8819a1c2ca19997f1a6d34" />
-  <project name="cJSON"
-           path="packages/apps/OpenEUICC/libs/lpac-jni/src/main/jni/cjson/cjson"
-           remote="davegamble"
-           revision="6d9f2443ab071f86e5d9b43025a40929ec41c46c" />
+  <project name="estkme-group/openeuicc" path="packages/apps/OpenEUICC" remote="github" revision="28aad5790418585059ebdad8b4b0fdbab56dcaa7" />
+  <project name="estkme-group/lpac" path="packages/apps/OpenEUICC/libs/lpac-jni/src/main/jni/lpac" remote="github" revision="50cdf15ab40942b00f8819a1c2ca19997f1a6d34" />
+  <project name="DaveGamble/cJSON" path="packages/apps/OpenEUICC/libs/lpac-jni/src/main/jni/cjson/cjson" remote="github" revision="6d9f2443ab071f86e5d9b43025a40929ec41c46c" />
 </manifest>
