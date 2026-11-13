@@ -78,16 +78,6 @@ def blob_fixup_miface_weak_nonsecure(
 
 blob_fixups: blob_fixups_user_type = {
     (
-        # The external camera provider stack is built against
-        # android.hardware.graphics.common V6, this tree only provides V7.
-        'vendor/lib64/android.hardware.camera.device-V1-ndk.so',
-        'vendor/lib64/camera.device-external-impl.so',
-    ): blob_fixup()
-        .replace_needed(
-            'android.hardware.graphics.common-V6-ndk.so',
-            'android.hardware.graphics.common-V7-ndk.so',
-        ),
-    (
         'odm/etc/camera/enhance_motiontuning.xml',
         'odm/etc/camera/motiontuning.xml',
         'odm/etc/camera/snsc_bokeh_motiontuning.xml',
@@ -195,9 +185,6 @@ blob_fixups: blob_fixups_user_type = {
         "odm/lib64/libmicamera_aidl_provider.so",
         "odm/lib64/libmicamera_hal_core.so",
         "odm/lib64/libsimulation.so",
-        "vendor/bin/hw/android.hardware.camera.provider-V1-external-service",
-        "vendor/lib64/android.hardware.camera.provider-V1-external-impl.so",
-        "vendor/lib64/camera.device-external-impl.so",
     ): blob_fixup()
         .replace_needed(
             'libtinyxml2.so',
