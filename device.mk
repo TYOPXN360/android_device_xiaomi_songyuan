@@ -165,3 +165,27 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # DisplayCapability::BRIGHTNESS.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/displayconfig/display_id_4630947002586003091.xml:$(TARGET_COPY_OUT_VENDOR)/etc/displayconfig/display_id_4630947002586003091.xml
+
+# Region properties. Stock keeps these in /system_ext/etc/cust/cn/cust.prop and
+# applies them through its customization service; without them MIUICamera decides
+# it is running on a global build and loads the global camera configuration,
+# while the vendor tuning data here is the China one. That mismatch is what makes
+# the SAT multi camera reprocess path compute an output ROI outside the buffer and
+# abort the camera provider when the aspect ratio is switched to full screen.
+# Verified on stock: app_config_region=CN in the camera's own preferences.
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.miui.region=CN \
+    ro.miui.mcc=9460 \
+    ro.miui.mnc=9999 \
+    ro.miui.cust_variant=cn \
+    ro.miui.cust_hardware=V1 \
+    ro.vendor.miui.region=CN \
+    ro.vendor.miui.mcc=9460 \
+    ro.vendor.miui.mnc=9999 \
+    ro.vendor.miui.cust_variant=cn \
+    ro.vendor.miui.cust_hardware=V1
+
+# Ship the customization data itself as well, so anything that reads the
+# directory keeps working.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/cust/cn/cust.prop:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/cust/cn/cust.prop
