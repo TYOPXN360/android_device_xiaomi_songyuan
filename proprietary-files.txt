@@ -1861,3 +1861,48 @@ odm/etc/vintf/manifest/miaon_frame.xml
 # unset, so DisplayFeatureHal restores the wrong colour mode on every screen-on
 # and the panel comes back with a washed-out contrast filter.
 product/etc/device_features/songyuan.xml
+
+# Camera pieces the stock image ships but this tree never listed. The
+# watermark V2 plugin and the sensor PDL configs are referenced by the
+# stock camera HAL; the external-provider stack and the Xiaomi dynamic
+# camera server are separate services that were simply left out.
+odm/bin/camera-preamble.json
+odm/etc/camera/xiaomi/watermark/MiSansVF.ttf
+odm/etc/camera/xiaomi/watermark/oxanium_bold.ttf
+odm/etc/camera/xiaomi/watermark/oxanium_medium.ttf
+odm/etc/camera/xiaomi/watermark/oxanium_regular.ttf
+odm/etc/init/misensor_camera.rc
+odm/etc/intent_policy/app/com.android.camera.xml.enc
+odm/etc/intent_policy/qcom/sm8850/app/com.android.camera.xml.enc
+odm/etc/intent_policy/qcom/sm8850/songyuan/app/com.android.camera.xml.enc
+odm/etc/intent_policy/qcom/sm8850/songyuan/app/com.campmobile.snowcamera.xml.enc
+odm/etc/intent_policy/qcom/sm8850/songyuan/app/com.meitu.meiyancamera.xml.enc
+odm/etc/intent_policy/qcom/sm8850/songyuan/app/com.xhey.xcamera.xml.enc
+odm/etc/sensors/config/qsh_camera_common_sm8845.json
+odm/etc/sensors/config/qsh_camera_imx688_6.json
+odm/etc/sensors/config/qsh_camera_imx688_6_actuator.json
+odm/etc/sensors/config/qsh_camera_ov32c4c_4.json
+odm/etc/sensors/config/qsh_camera_ov32c4c_4_sm8845.json
+odm/etc/sensors/config/qsh_camera_s5kjn5_3.json
+odm/etc/sensors/config/qsh_camera_s5kjn5_3_actuator.json
+odm/firmware/217_CameraShutter_P_RTP.bin
+odm/firmware/86_lockscreenCameraEntry_P_RTP.bin
+odm/lib64/camera/plugins/com.xiaomi.plugin.watermarkV2.so
+vendor/bin/hw/android.hardware.camera.provider-V1-external-service
+vendor/bin/hw/vendor.xiaomi.hardware.dynamiccameraserver
+vendor/etc/bpf/cameraBpfGpl.o
+vendor/etc/external_camera_config.xml
+vendor/etc/init/android.hardware.camera.provider-V1-external-service.rc
+vendor/etc/vintf/manifest/android.hardware.camera.provider.external.xml
+vendor/lib/libcamxexternalformatutils.so
+vendor/lib64/android.hardware.camera.device-V1-ndk.so
+vendor/lib64/android.hardware.camera.metadata-V1-ndk.so
+vendor/lib64/android.hardware.camera.provider-V1-external-impl.so
+vendor/lib64/android.hardware.camera.provider-V1-ndk.so
+vendor/lib64/android.hardware.camera.provider-V2-ndk.so
+vendor/lib64/camera.device-external-impl.so
+vendor/lib64/vendor.qti.hardware.camera.aon-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.camera.aon-V2-ndk.so
+vendor/lib64/vendor.qti.hardware.camera.aon-V3-ndk.so
+vendor/lib64/vendor.qti.hardware.camera.offlinecamera-V1-ndk.so
+vendor/lib64/vendor.qti.hardware.camera.postproc@1.0.so
