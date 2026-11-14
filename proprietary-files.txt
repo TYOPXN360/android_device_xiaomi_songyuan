@@ -1147,6 +1147,7 @@ odm/lib64/com.xiaomi.immunesystem.core.so
 odm/lib64/com.xiaomi.immunesystem.hook.camx.so
 odm/lib64/com.xiaomi.immunesystem.hook.mivi.so
 odm/lib64/com.xiaomi.immunesystem.hook.mtkhal.so
+odm/lib64/com.xiaomi.immunesystem.hook.chi.so
 odm/lib64/com.xiaomi.messagecenter.so
 odm/lib64/com.xiaomi.stub.camx.so
 odm/lib64/com.xiaomi.stub.chi.so
