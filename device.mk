@@ -197,28 +197,4 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     SecurityCenterStub
 
-# HyperOS cameraserver. The MIUI camera talks to libmicamera_hal_core through
-# session parameters that only the stock camera service understands: it injects
-# MI_SESSION_PARA_CLIENT_NAME, MI_SESSION_PARA_ACTIVITY_NAME and
-# COM_XIAOMI_SESSIONPARAMS_MI_STREAM_USECASE, and it maps requested sizes through
-# its own "xiaomi size" table.
-#
-# The AOSP camera service does none of that, so the HAL reports
-# COM_XIAOMI_SESSIONPARAMS_MI_STREAM_USECASE not found, picks a default stream
-# configuration and ends up feeding a 16:9 4096x2304 buffer to OFE for a 2.178
-# full screen capture. OFE cannot crop wider than its input, NcLib rejects the
-# frame with "output buffer[2] not covered by ROI" and the provider aborts.
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/cameraserver:$(TARGET_COPY_OUT_SYSTEM)/bin/cameraserver
 
-# The HyperOS camera service and the AOSP one expect different CameraParameters
-# statics: ours references CameraParameters::TRUE and ::FALSE, stock references
-# ::TRUE_ARRAY and ::FALSE_ARRAY. Swapping only cameraserver therefore leaves it
-# with two unresolved symbols and it never starts.
-#
-# Shipping both from stock keeps the pair consistent. Checked every consumer of
-# libcamera_client - libandroid_runtime, libcamera2ndk, libstagefright, libmedia,
-# virtual_camera and the three Xiaomi jni/processing libraries - against the
-# stock symbol table: none of them needs anything stock lacks.
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/libcamera_client.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcamera_client.so
