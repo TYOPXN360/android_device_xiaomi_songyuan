@@ -189,3 +189,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # directory keeps working.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/cust/cn/cust.prop:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/cust/cn/cust.prop
+
+# Stub Security Center. MIUICamera asks com.miui.securitycenter to declare its
+# privacy permissions on first launch and treats result code 1 as accepted; with
+# no such activity the request never completes, mIsNewCTAShowing stays true and
+# setupCamera is skipped, leaving the viewfinder frozen.
+PRODUCT_PACKAGES += \
+    SecurityCenterStub

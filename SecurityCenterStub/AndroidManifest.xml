@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.miui.securitycenter">
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoDisplay">
+
+        <!--
+             MIUICamera routes its first launch through the HyperOS Security Center
+             privacy declaration: it resolves miui.intent.action.SYSTEM_PERMISSION_DECLARE_NEW
+             (falling back to the non _NEW action), starts it with setPackage on
+             com.miui.securitycenter and treats result code 1 or 0x904 as accepted.
+
+             Without such an activity mIsNewCTAShowing never clears, setupCamera is
+             skipped and the viewfinder stays frozen. This stub answers the request
+             straight away so the app can run on its normal China configuration
+             instead of being forced down the global path.
+        -->
+        <activity
+            android:name=".PermissionDeclareActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="miui.intent.action.SYSTEM_PERMISSION_DECLARE" />
+                <action android:name="miui.intent.action.SYSTEM_PERMISSION_DECLARE_NEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
