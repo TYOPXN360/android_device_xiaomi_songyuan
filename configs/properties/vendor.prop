@@ -35,11 +35,3 @@ ro.vendor.qtvm.auto.start=oemvm
 
 # Face
 ro.vendor.miface.started=true
-
-# China region. ro.vendor.* keys are only accepted from a vendor build.prop, so
-# the system_ext copy of the cust partition properties is ignored for these.
-ro.vendor.miui.region=CN
-ro.vendor.miui.mcc=9460
-ro.vendor.miui.mnc=9999
-ro.vendor.miui.cust_variant=cn
-ro.vendor.miui.cust_hardware=V1
