@@ -178,12 +178,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.miui.mcc=9460 \
     ro.miui.mnc=9999 \
     ro.miui.cust_variant=cn \
-    ro.miui.cust_hardware=V1 \
-    ro.vendor.miui.region=CN \
-    ro.vendor.miui.mcc=9460 \
-    ro.vendor.miui.mnc=9999 \
-    ro.vendor.miui.cust_variant=cn \
-    ro.vendor.miui.cust_hardware=V1
+    ro.miui.cust_hardware=V1
 
 # Ship the customization data itself as well, so anything that reads the
 # directory keeps working.
