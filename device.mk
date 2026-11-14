@@ -210,3 +210,15 @@ PRODUCT_PACKAGES += \
 # frame with "output buffer[2] not covered by ROI" and the provider aborts.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/cameraserver:$(TARGET_COPY_OUT_SYSTEM)/bin/cameraserver
+
+# The HyperOS camera service and the AOSP one expect different CameraParameters
+# statics: ours references CameraParameters::TRUE and ::FALSE, stock references
+# ::TRUE_ARRAY and ::FALSE_ARRAY. Swapping only cameraserver therefore leaves it
+# with two unresolved symbols and it never starts.
+#
+# Shipping both from stock keeps the pair consistent. Checked every consumer of
+# libcamera_client - libandroid_runtime, libcamera2ndk, libstagefright, libmedia,
+# virtual_camera and the three Xiaomi jni/processing libraries - against the
+# stock symbol table: none of them needs anything stock lacks.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/libcamera_client.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcamera_client.so
