@@ -107,9 +107,11 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.face-V4-ndk.vendor \
     SongyuanFaceEnroll
 
-# Lights (rear AW21024 LED)
+# Lights (rear AW21024 LED). The driver and the LED only exist on songyuan, so
+# both the HAL and the settings page live in this device tree.
 PRODUCT_PACKAGES += \
-    android.hardware.light-service.sm8850
+    android.hardware.light-service.sm8850 \
+    XiaomiPartsSongyuan
 
 # Overlays
 PRODUCT_PACKAGES += \

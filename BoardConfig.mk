@@ -55,9 +55,14 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 BOARD_SUPER_PARTITION_SIZE := 16642998272
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 16632512512
 
+# Sepolicy for the pieces that only exist on songyuan: the AW21024 rear light
+# and the Novatek visual display processor.
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+
 # Security
-# Must be >= the bootloader's security-patch-level, or it refuses the boot chain
-# and the device bounces back to fastboot right after the MI logo (no vibration:
+# Must be >= the bootloader's security-patch-level, or it refuses the boot chain# and the device bounces back to fastboot right after the MI logo (no vibration:
 # init never runs). Check the floor with:
 #   fastboot getvar security-patch-level   -> 2026-10-01 on this device
 # This value is written into the boot image as

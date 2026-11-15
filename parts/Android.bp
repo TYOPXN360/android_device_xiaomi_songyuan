@@ -1,0 +1,21 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// songyuan only. The AW21024 rear light does not exist on the other sm8850
+// devices, so the page and its HAL live here rather than in sm8850-common.
+android_app {
+    name: "XiaomiPartsSongyuan",
+    certificate: "platform",
+    defaults: ["SettingsLibDefaults"],
+    srcs: ["src/**/*.kt"],
+    platform_apis: true,
+    privileged: true,
+    system_ext_specific: true,
+    static_libs: [
+        "androidx.core_core",
+        "androidx.preference_preference",
+        "org.lineageos.settings.resources",
+    ],
+}

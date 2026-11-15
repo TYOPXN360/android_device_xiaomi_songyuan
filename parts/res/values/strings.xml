@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string name="app_name">Xiaomi Parts</string>
+
+    <!-- Rear light (AW21024) settings. Titles and summaries follow the stock
+         strings for this device: lights_title, battery_light_title,
+         battery_light_summary and notification_pulse_title. The notification
+         switch writes the standard Settings.System.NOTIFICATION_LIGHT_PULSE
+         key that NotificationAttentionHelper already reads, so it needs no
+         vendor property of its own. -->
+    <string name="rear_light_title">LED light</string>
+    <string name="rear_light_master_title">Rear light</string>
+    <string name="rear_light_master_summary">Master switch for the LED on the back of the phone</string>
+    <string name="rear_light_options_title">Behaviour</string>
+    <string name="rear_light_battery_title">Light up when charging</string>
+    <string name="rear_light_battery_summary">Turn on notification light while device is charging</string>
+    <string name="rear_light_notify_title">Blink light</string>
+    <string name="rear_light_notify_summary">Turn on notification light when a notification arrives</string>
+    <string name="rear_light_footer">Camera and microphone indicators are always shown while those are in use.</string>
+    <string name="rear_light_entry_summary">Control the LED on the back</string>
+</resources>

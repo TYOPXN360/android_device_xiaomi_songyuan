@@ -1,0 +1,20 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+rust_binary {
+    name: "android.hardware.light-service.sm8850",
+    relative_install_path: "hw",
+    vendor: true,
+    srcs: ["src/*.rs"],
+    crate_root: "src/main.rs",
+    init_rc: ["android.hardware.light-service.sm8850.rc"],
+    vintf_fragments: ["android.hardware.light-service.sm8850.xml"],
+    rustlibs: [
+        "android.hardware.light-V3-rust",
+        "libbinder_rs",
+        "libandroid_logger",
+        "liblog_rust",
+    ],
+}

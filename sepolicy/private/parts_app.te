@@ -1,0 +1,4 @@
+# The songyuan rear light page writes the charging switch. Declared here rather
+# than in sm8850-common because the AW21024 only exists on this device.
+set_prop(parts_app, rear_light_prop)
+get_prop(parts_app, rear_light_prop)
