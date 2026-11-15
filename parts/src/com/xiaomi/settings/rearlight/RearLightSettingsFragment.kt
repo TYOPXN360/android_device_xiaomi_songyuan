@@ -11,7 +11,7 @@ import androidx.preference.Preference
 import androidx.preference.TwoStatePreference
 import com.android.settingslib.widget.MainSwitchPreference
 import com.android.settingslib.widget.SettingsBasePreferenceFragment
-import com.xiaomi.settings.songyuan.R
+import com.xiaomi.settings.R
 
 class RearLightSettingsFragment :
     SettingsBasePreferenceFragment(), Preference.OnPreferenceChangeListener {

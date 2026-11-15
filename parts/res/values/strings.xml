@@ -4,8 +4,18 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
+    <!-- App Name -->
     <string name="app_name">Xiaomi Parts</string>
 
+    <!-- Touch settings -->
+    <string name="touch_title">Touch Sampling Rate</string>
+    <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
+    <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
+    <!-- Display enhancement settings -->
+    <string name="display_enhance_title">AI Display Enhancement</string>
+    <string name="display_enhance_switch_title">Enable AI display enhancement</string>
+    <string name="display_enhance_switch_summary">Runs the Novatek visual display processor, which handles super resolution, motion compensation, SDR to HDR conversion and the 3D LUT for video and games</string>
+    <string name="display_enhance_footer">Turning this off leaves the panel driven by the display processor alone. No reboot required.</string>
     <!-- Rear light (AW21024) settings. Titles and summaries follow the stock
          strings for this device: lights_title, battery_light_title,
          battery_light_summary and notification_pulse_title. The notification
@@ -15,11 +25,13 @@
     <string name="rear_light_title">LED light</string>
     <string name="rear_light_master_title">Rear light</string>
     <string name="rear_light_master_summary">Master switch for the LED on the back of the phone</string>
-    <string name="rear_light_options_title">Behaviour</string>
     <string name="rear_light_battery_title">Light up when charging</string>
     <string name="rear_light_battery_summary">Turn on notification light while device is charging</string>
     <string name="rear_light_notify_title">Blink light</string>
     <string name="rear_light_notify_summary">Turn on notification light when a notification arrives</string>
     <string name="rear_light_footer">Camera and microphone indicators are always shown while those are in use.</string>
     <string name="rear_light_entry_summary">Control the LED on the back</string>
+    <!-- List summaries shown in the Settings entry -->
+    <string name="touch_entry_summary">Raise the touchscreen polling rate</string>
+    <string name="display_enhance_entry_summary">Drive the Novatek display processor</string>
 </resources>

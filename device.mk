@@ -111,7 +111,7 @@ PRODUCT_PACKAGES += \
 # both the HAL and the settings page live in this device tree.
 PRODUCT_PACKAGES += \
     android.hardware.light-service.sm8850 \
-    XiaomiPartsSongyuan
+    XiaomiParts
 
 # Overlays
 PRODUCT_PACKAGES += \
