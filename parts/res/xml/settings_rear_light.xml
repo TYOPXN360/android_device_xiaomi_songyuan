@@ -13,25 +13,28 @@
     <com.android.settingslib.widget.MainSwitchPreference
         android:key="rear_light_enable"
         android:title="@string/rear_light_master_title"
-        android:summary="@string/rear_light_master_summary" />
+        android:summary="@string/rear_light_master_summary"
+        settings:allowDividerBelow="true" />
 
-    <!-- The two behaviours below it are ordinary switches inside a card, the
-         same shape Settings uses for dependent options. -->
-    <com.android.settingslib.widget.UntitledPreferenceCategory
-        android:key="rear_light_options"
-        android:dependency="rear_light_enable">
+    <!-- The two behaviours sit inside the same card as the master switch, which
+         is what Settings does for dependent options: the group is one rounded
+         container, not a switch followed by a separate card. allowDividerAbove
+         on the first row and allowDividerBelow on the second keep the dividers
+         inside that container. -->
+    <SwitchPreferenceCompat
+        android:key="rear_light_battery"
+        android:title="@string/rear_light_battery_title"
+        android:summary="@string/rear_light_battery_summary"
+        android:dependency="rear_light_enable"
+        settings:allowDividerAbove="true"
+        settings:allowDividerBelow="true" />
 
-        <SwitchPreferenceCompat
-            android:key="rear_light_battery"
-            android:title="@string/rear_light_battery_title"
-            android:summary="@string/rear_light_battery_summary" />
-
-        <SwitchPreferenceCompat
-            android:key="rear_light_notify"
-            android:title="@string/rear_light_notify_title"
-            android:summary="@string/rear_light_notify_summary" />
-
-    </com.android.settingslib.widget.UntitledPreferenceCategory>
+    <SwitchPreferenceCompat
+        android:key="rear_light_notify"
+        android:title="@string/rear_light_notify_title"
+        android:summary="@string/rear_light_notify_summary"
+        android:dependency="rear_light_enable"
+        settings:allowDividerAbove="true" />
 
     <com.android.settingslib.widget.FooterPreference
         android:title="@string/rear_light_footer"
