@@ -11,6 +11,12 @@ rust_binary {
     crate_root: "src/main.rs",
     init_rc: ["android.hardware.light-service.sm8850.rc"],
     vintf_fragments: ["android.hardware.light-service.sm8850.xml"],
+    // Link the Rust standard library in statically. The dylib form lives on
+    // /system, and a vendor process may not depend on it - the linker refuses
+    // at runtime with "cannot locate symbol ..._std2io5error...5Debug3fmt",
+    // which is std::io::Error's Debug impl. A vendor binary has to carry its
+    // own std.
+    prefer_rlib: true,
     rustlibs: [
         "android.hardware.light-V3-rust",
         "libbinder_rs",
