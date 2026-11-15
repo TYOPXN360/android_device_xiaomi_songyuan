@@ -27,13 +27,37 @@ BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 
 TARGET_NO_KERNEL_OVERRIDE := true
-# Kernel headers: no kernel source is published for songyuan, so ship the QTI
-# UAPI headers (IPA) that in-tree code needs. This assignment feeds the
-# prebuilt_kernel_includes genrule, but cc.go reads the same name with Getenv,
-# which a makefile cannot set (export is rejected by the build system). So it
-# must ALSO be exported in the shell, or libipanat fails on linux/msm_ipa.h:
-#   export TARGET_PREBUILT_KERNEL_HEADERS=device/xiaomi/songyuan-kernel/kernel-headers.tar.gz
+
+# Kernel headers: no kernel source is published for songyuan, so the only copy
+# of the QTI UAPI headers is the tarball stock shipped. In-tree code needs them
+# (ipacm and libipanat include <linux/msm_ipa.h>, the display HALs include the
+# sde and msm_drm_pp ones), so unpack them and point the native kernel-header
+# path at the result.
+#
+# TARGET_BOARD_KERNEL_HEADERS is the makefile-side knob for the built-in
+# device_kernel_headers module: config.mk validates the directory, soong_config.mk
+# writes it into soong.variables as DeviceKernelHeaders, and cc/kernel_headers.go
+# reexports it as a system include dir. Every module that already lists
+# device_kernel_headers picks it up with no change of its own, which is exactly
+# what ipacm needs.
+#
+# The directory layout has to mirror the kernel include/ tree, which is why it
+# holds linux/ and display/ directly. config.mk also validates that the
+# directory name ends in kernel-headers, so the name is not free-form.
+TARGET_BOARD_KERNEL_HEADERS := $(KERNEL_PATH)/kernel-headers
+
+# The prebuilt_kernel_includes genrule in vendor/uwu/build/soong still takes the
+# tarball as its input, so this assignment has to stay or that genrule expands
+# to "gzip -d < " with nothing after the redirect and the build dies on a shell
+# syntax error. It is not what makes ipacm find msm_ipa.h - TARGET_BOARD_KERNEL_HEADERS
+# above does that - but the genrule has no other source for the file.
+#
+# Note this one is only read at makefile level. cc.go reads the same name with
+# Getenv to decide whether to swap device_kernel_headers for
+# prebuilt_kernel_headers, and a makefile assignment cannot satisfy that; that
+# is why the header lookup goes through TARGET_BOARD_KERNEL_HEADERS instead.
 TARGET_PREBUILT_KERNEL_HEADERS := $(KERNEL_PATH)/kernel-headers.tar.gz
+
 PRODUCT_COPY_FILES += \
 	$(KERNEL_PATH)/kernel:kernel
 
