@@ -12,9 +12,12 @@
     <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
     <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
     <!-- Display enhancement settings -->
-    <string name="display_enhance_title">AI Display Enhancement</string>
-    <string name="display_enhance_switch_title">Enable AI display enhancement</string>
-    <string name="display_enhance_switch_summary">Runs the Novatek visual display processor, which handles super resolution, motion compensation, SDR to HDR conversion and the 3D LUT for video and games</string>
+    <!-- Wording follows the stock ROM: screen_enhance_engine_title is the page
+         title, screen_enhance_engine_dualDPU_title the switch,
+         screen_enhance_engine_dualDPU_summary its one-line description. -->
+    <string name="display_enhance_title">AI image engine</string>
+    <string name="display_enhance_switch_title">Dual-core visuals</string>
+    <string name="display_enhance_switch_summary">Enhance video quality via a dedicated chip</string>
     <string name="display_enhance_footer">Turning this off leaves the panel driven by the display processor alone. No reboot required.</string>
     <!-- Rear light (AW21024) settings. Titles and summaries follow the stock
          strings for this device: lights_title, battery_light_title,
@@ -33,5 +36,5 @@
     <string name="rear_light_entry_summary">Control the LED on the back</string>
     <!-- List summaries shown in the Settings entry -->
     <string name="touch_entry_summary">Raise the touchscreen polling rate</string>
-    <string name="display_enhance_entry_summary">Drive the Novatek display processor</string>
+    <string name="display_enhance_entry_summary">Enhance video quality via a dedicated chip</string>
 </resources>
