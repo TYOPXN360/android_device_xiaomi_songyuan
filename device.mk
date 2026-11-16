@@ -12,6 +12,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/resourcemanager_canoe_mtp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_canoe/resourcemanager_canoe_mtp.xml \
     $(LOCAL_PATH)/configs/audio/libdev_speaker.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libdev_speaker.so
 
+# The common tree also installs a generic sensor list. HalProxy reads both the
+# vendor and ODM lists, so install the China list in vendor before common.mk is
+# inherited; the first PRODUCT_COPY_FILES entry wins.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
+
 # Inherit from sm8650-common
 $(call inherit-product, device/xiaomi/sm8850-common/common.mk)
 
@@ -27,10 +33,6 @@ $(call inherit-product, vendor/xiaomi/songyuan/songyuan-vendor.mk)
 PRODUCT_PACKAGES := $(filter-out libsensinghubapi-prop,$(PRODUCT_PACKAGES))
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/libsensinghubapi-prop.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libsensinghubapi-prop.so
-
-# The Xiaomi sensor service resolves its sub-HAL list from ODM on this device.
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_ODM)/etc/sensors/hals.conf
 
 # Camera
 PRODUCT_PACKAGES += \
