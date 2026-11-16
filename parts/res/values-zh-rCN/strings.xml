@@ -24,6 +24,7 @@
     <string name="rear_light_title">闪烁指示灯</string>
     <string name="rear_light_master_title">闪烁指示灯</string>
     <string name="rear_light_master_summary">手机背部 LED 的总开关</string>
+    <string name="rear_light_options_title">行为</string>
     <string name="rear_light_battery_title">充电时呼吸灯常亮</string>
     <string name="rear_light_battery_summary">充电时，呼吸灯会常亮提示充电状态</string>
     <string name="rear_light_notify_title">收到通知时呼吸灯闪烁</string>

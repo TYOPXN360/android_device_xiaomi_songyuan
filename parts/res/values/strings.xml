@@ -28,6 +28,7 @@
     <string name="rear_light_title">LED light</string>
     <string name="rear_light_master_title">Rear light</string>
     <string name="rear_light_master_summary">Master switch for the LED on the back of the phone</string>
+    <string name="rear_light_options_title">Behaviour</string>
     <string name="rear_light_battery_title">Light up when charging</string>
     <string name="rear_light_battery_summary">Turn on notification light while device is charging</string>
     <string name="rear_light_notify_title">Blink light</string>

@@ -5,36 +5,36 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:title="@string/rear_light_title">
 
-    <!-- The master switch keeps the top-of-page treatment Settings uses for
-         "enable this feature" toggles. -->
     <com.android.settingslib.widget.MainSwitchPreference
         android:key="rear_light_enable"
         android:title="@string/rear_light_master_title"
-        android:summary="@string/rear_light_master_summary"
-        settings:allowDividerBelow="true" />
+        android:summary="@string/rear_light_master_summary" />
 
-    <!-- The two behaviours sit inside the same card as the master switch, which
-         is what Settings does for dependent options: the group is one rounded
-         container, not a switch followed by a separate card. allowDividerAbove
-         on the first row and allowDividerBelow on the second keep the dividers
-         inside that container. -->
-    <SwitchPreferenceCompat
-        android:key="rear_light_battery"
-        android:title="@string/rear_light_battery_title"
-        android:summary="@string/rear_light_battery_summary"
-        android:dependency="rear_light_enable"
-        settings:allowDividerAbove="true"
-        settings:allowDividerBelow="true" />
+    <!-- A titled PreferenceCategory is what draws the child rows as one card.
+         This mirrors accessibility_vibration_settings.xml: a main switch, then a
+         category whose switches share a single rounded container. Without the
+         title the category renders each child as its own block, which is what
+         broke the corner radius here. -->
+    <PreferenceCategory
+        android:key="rear_light_options"
+        android:title="@string/rear_light_options_title"
+        android:persistent="false">
 
-    <SwitchPreferenceCompat
-        android:key="rear_light_notify"
-        android:title="@string/rear_light_notify_title"
-        android:summary="@string/rear_light_notify_summary"
-        android:dependency="rear_light_enable"
-        settings:allowDividerAbove="true" />
+        <SwitchPreferenceCompat
+            android:key="rear_light_battery"
+            android:title="@string/rear_light_battery_title"
+            android:summary="@string/rear_light_battery_summary"
+            android:dependency="rear_light_enable" />
+
+        <SwitchPreferenceCompat
+            android:key="rear_light_notify"
+            android:title="@string/rear_light_notify_title"
+            android:summary="@string/rear_light_notify_summary"
+            android:dependency="rear_light_enable" />
+
+    </PreferenceCategory>
 
     <com.android.settingslib.widget.FooterPreference
         android:title="@string/rear_light_footer"
