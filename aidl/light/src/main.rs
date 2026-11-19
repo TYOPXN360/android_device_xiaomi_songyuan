@@ -127,8 +127,29 @@ impl Led {
         fs::metadata(format!("{LED_PATH}color")).is_ok()
     }
 
+    /// Reads back the driver's hardware-enable bit. The music light effect
+    /// drives the same chip and can switch it off behind our back.
+    fn is_enabled(&self) -> bool {
+        fs::read_to_string(format!("{LED_PATH}hwen"))
+            .map(|hwen| hwen.contains('1'))
+            .unwrap_or(false)
+    }
+
     fn set_mode(&mut self, want: Mode) -> bool {
+        // Something else (the music light) may have switched the chip off while
+        // we still think we are in Solid/Breath. Forget the cached mode so the
+        // next transition enables the chip again.
+        if want != Mode::Off && self.mode != Mode::Off && !self.is_enabled() {
+            self.mode = Mode::Off;
+        }
         if self.mode == want {
+            // The chip can also be on while we are Off. Turn it off, but skip
+            // the run=0 write when it is already disabled: every register write
+            // fails and is retried, flooding I2C errors.
+            if want == Mode::Off && self.is_enabled() {
+                let ok = write_node("run", "0");
+                return write_node("hwen", "0") && ok;
+            }
             return true;
         }
         // Any transition has to go through the disabled state, the driver
