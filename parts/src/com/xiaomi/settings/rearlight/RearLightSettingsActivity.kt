@@ -6,10 +6,10 @@
 package com.xiaomi.settings.rearlight
 
 import android.os.Bundle
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
+import com.xiaomi.settings.PartsActivity
 import com.android.settingslib.collapsingtoolbar.R
 
-class RearLightSettingsActivity : CollapsingToolbarBaseActivity() {
+class RearLightSettingsActivity : PartsActivity() {
 
     companion object {
         private const val TAG = "RearLightActivity"

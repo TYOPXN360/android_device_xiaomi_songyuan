@@ -6,10 +6,10 @@
 package com.xiaomi.settings.display
 
 import android.os.Bundle
-import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity
+import com.xiaomi.settings.PartsActivity
 import com.android.settingslib.collapsingtoolbar.R
 
-class DisplayEnhanceSettingsActivity : CollapsingToolbarBaseActivity() {
+class DisplayEnhanceSettingsActivity : PartsActivity() {
 
     companion object {
         private const val TAG = "DisplayEnhanceActivity"
