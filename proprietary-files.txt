@@ -22,6 +22,7 @@ odm/etc/acdbdata/Mi/model924_eai_int8_8850.eai
 odm/etc/acdbdata/Mi/model9414_eai_int8_8850.eai
 
 # ADSP modules
+odm/etc/audio/mis_audioled_configs.bin
 odm/etc/audio/mis_gameop_configs.bin
 odm/etc/audio/mis_head_spatial.bin
 odm/etc/audio/mis_head.bin
@@ -169,6 +170,8 @@ vendor/lib64/rfs/dsp/libscveT2T_skel.so
 vendor/lib64/rfs/dsp/libsvDescMatch_dsp.so
 vendor/lib64/rfs/dsp/libsvDescMatchImpl_dsp_skel.so
 vendor/lib64/rfs/dsp/libsvdsp.so
+vendor/lib64/rfs/dsp/libsvswdsp.so
+vendor/lib64/rfs/dsp/libsvswdsp_skel.so
 vendor/lib64/rfs/dsp/libvpp_frc.so
 vendor/lib64/rfs/dsp/libvpp_gfrc_networks.so
 vendor/lib64/rfs/dsp/libvpp_svc_skel.so 
@@ -1895,3 +1898,6 @@ odm/lib64/camera/plugins/com.xiaomi.plugin.watermarkV2.so
 vendor/bin/hw/vendor.xiaomi.hardware.dynamiccameraserver
 vendor/etc/bpf/cameraBpfGpl.o
 vendor/etc/external_camera_config.xml
+
+# Mi Remote (stock data-app), JNI libs unpacked by extract-files.py
+mi_ext/product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteController/XMRemoteController.apk;PRESIGNED;SKIPAPKCHECKS
