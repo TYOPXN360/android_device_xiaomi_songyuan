@@ -1900,4 +1900,4 @@ vendor/etc/bpf/cameraBpfGpl.o
 vendor/etc/external_camera_config.xml
 
 # Mi Remote (stock data-app), JNI libs unpacked by extract-files.py
-mi_ext/product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteController/XMRemoteController.apk;PRESIGNED;SKIPAPKCHECKS
+product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteController/XMRemoteController.apk;PRESIGNED;SKIPAPKCHECKS
