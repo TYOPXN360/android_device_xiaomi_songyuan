@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Xiaomi Parts</string>
+
+    <!-- Touch settings -->
+    <string name="touch_title">Touch Sampling Rate</string>
+    <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
+    <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
+    <!-- Display enhancement settings -->
+    <!-- Wording follows the stock ROM: screen_enhance_engine_title is the page
+         title, screen_enhance_engine_dualDPU_title the switch,
+         screen_enhance_engine_dualDPU_summary its one-line description. -->
+    <string name="display_enhance_title">AI image engine</string>
+    <string name="display_enhance_switch_title">Dual-core visuals</string>
+    <string name="display_enhance_switch_summary">Enhance video quality via a dedicated chip</string>
+    <string name="display_enhance_footer">Turning this off leaves the panel driven by the display processor alone. No reboot required.</string>
+    <!-- Rear light (AW21024) settings. Titles and summaries follow the stock
+         strings for this device: lights_title, battery_light_title,
+         battery_light_summary and notification_pulse_title. The notification
+         switch writes the standard Settings.System.NOTIFICATION_LIGHT_PULSE
+         key that NotificationAttentionHelper already reads, so it needs no
+         vendor property of its own. -->
+    <string name="rear_light_title">LED light</string>
+    <string name="rear_light_master_title">Rear light</string>
+    <string name="rear_light_master_summary">Master switch for the LED on the back of the phone</string>
+    <string name="rear_light_options_title">Behaviour</string>
+    <string name="rear_light_battery_title">Light up when charging</string>
+    <string name="rear_light_battery_summary">Turn on notification light while device is charging</string>
+    <string name="rear_light_notify_title">Blink light</string>
+    <string name="rear_light_notify_summary">Turn on notification light when a notification arrives</string>
+    <string name="rear_light_footer">Camera and microphone indicators are always shown while those are in use.</string>
+    <string name="rear_light_entry_summary">Control the LED on the back</string>
+
+    <!-- Music-reactive rear light, merged into the rear light page. -->
+    <string name="music_light_title">Music light</string>
+    <string name="music_light_enabled_title">Pulse with music</string>
+    <string name="music_light_enabled_summary">The rear light follows the music while media plays</string>
+    <string name="music_light_apps_mode_title">Light up for</string>
+    <string name="music_light_apps_mode_all">All media</string>
+    <string name="music_light_apps_mode_selected">Selected apps</string>
+    <string name="music_light_apps_title">Apps</string>
+    <!-- List summaries shown in the Settings entry -->
+    <string name="touch_entry_summary">Raise the touchscreen polling rate</string>
+    <string name="display_enhance_entry_summary">Enhance video quality via a dedicated chip</string>
+</resources>

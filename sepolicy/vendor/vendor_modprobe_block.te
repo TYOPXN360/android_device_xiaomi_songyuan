@@ -1,0 +1,12 @@
+# Xiaomi's prebuilt mtdoops.ko walks /dev/block/by-name/* from its module
+# init (get_bm_devices / block2mtd_retry).  vendor.modprobe loads it during
+# early-init, but the vendor_modprobe domain is not allowed to search
+# /dev/block, so the walk fails and is retried every ~3 s.  The script then
+# never reaches "setprop vendor.all.modules.ready 1" and init blocks in
+# post-fs-data (init.qti.kernel.target.rc) forever.
+#
+# blk_file open/read/write is covered by the platform neverallow in
+# system/sepolicy/private/domain.te, but lookup_bdev() only needs the path
+# walk, so allow just the dir and symlink access here.
+allow vendor_modprobe block_device:dir search;
+allow vendor_modprobe block_device:lnk_file read;

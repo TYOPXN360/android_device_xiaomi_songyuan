@@ -1,0 +1,24 @@
+service tee-supplicant /odm/bin/tee-supplicant
+    class core
+    user root
+    group system secure_element nfc drmrpc
+    capabilities SYS_RAWIO
+    disabled
+
+on fs
+    # UFS RPMB well-known LUN; tee-supplicant only has group system
+    chmod 0660 /dev/0:0:0:49476
+    mkdir /mnt/vendor/persist/mitee 0775 root system
+    mkdir /mnt/vendor/persist/mitee/data 0775 root system
+    restorecon_recursive /mnt/vendor/persist/mitee
+
+on post-fs-data
+    mkdir /data/vendor/mitee 0775 system system
+
+on firmware_mounts_complete
+    chown system system /dev/tee0
+    chown system system /dev/teepriv0
+    chmod 0660 /dev/tee0
+    chmod 0660 /dev/teepriv0
+    start tee-supplicant
+    setprop vendor.teefs_state ready

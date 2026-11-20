@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/rear_light_title">
+
+    <com.android.settingslib.widget.MainSwitchPreference
+        android:key="rear_light_enable"
+        android:title="@string/rear_light_master_title"
+        android:summary="@string/rear_light_master_summary" />
+
+    <!-- A titled PreferenceCategory is what draws the child rows as one card.
+         This mirrors accessibility_vibration_settings.xml: a main switch, then a
+         category whose switches share a single rounded container. Without the
+         title the category renders each child as its own block, which is what
+         broke the corner radius here. -->
+    <PreferenceCategory
+        android:key="rear_light_options"
+        android:title="@string/rear_light_options_title"
+        android:persistent="false">
+
+        <SwitchPreferenceCompat
+            android:key="rear_light_battery"
+            android:title="@string/rear_light_battery_title"
+            android:summary="@string/rear_light_battery_summary"
+            android:dependency="rear_light_enable" />
+
+        <SwitchPreferenceCompat
+            android:key="rear_light_notify"
+            android:title="@string/rear_light_notify_title"
+            android:summary="@string/rear_light_notify_summary"
+            android:dependency="rear_light_enable" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="music_light"
+        android:title="@string/music_light_title">
+
+        <SwitchPreferenceCompat
+            android:key="music_light_enabled"
+            android:title="@string/music_light_enabled_title"
+            android:summary="@string/music_light_enabled_summary"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="music_light_apps_mode"
+            android:title="@string/music_light_apps_mode_title"
+            android:summary="%s"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="music_light_apps"
+        android:title="@string/music_light_apps_title"
+        android:persistent="false" />
+
+    <com.android.settingslib.widget.FooterPreference
+        android:title="@string/rear_light_footer"
+        android:selectable="false" />
+
+</PreferenceScreen>

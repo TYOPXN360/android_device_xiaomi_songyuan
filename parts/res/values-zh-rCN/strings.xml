@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- App Name -->
+    <string name="app_name">小米部件</string>
+
+    <!-- Touch settings -->
+    <string name="touch_title">触摸采样率</string>
+    <string name="touch_high_sampling_rate_title">高触摸采样率</string>
+    <string name="touch_high_sampling_rate_footer">提高触摸屏的轮询频率</string>
+
+    <!-- Display enhancement settings -->
+    <string name="display_enhance_title">AI大师画质引擎</string>
+    <string name="display_enhance_switch_title">双芯视效</string>
+    <string name="display_enhance_switch_summary">通过独显芯片对视频画质进行增强</string>
+    <string name="display_enhance_footer">关闭后画面将仅由显示处理器输出，无需重启。</string>
+
+    <!-- Rear light (AW21024) settings. Wording follows the stock ROM:
+         lights_title, battery_light_title, battery_light_summary and
+         notification_pulse_title. -->
+    <string name="rear_light_title">闪烁指示灯</string>
+    <string name="rear_light_master_title">闪烁指示灯</string>
+    <string name="rear_light_master_summary">手机背部 LED 的总开关</string>
+    <string name="rear_light_options_title">行为</string>
+    <string name="rear_light_battery_title">充电时呼吸灯常亮</string>
+    <string name="rear_light_battery_summary">充电时，呼吸灯会常亮提示充电状态</string>
+    <string name="rear_light_notify_title">收到通知时呼吸灯闪烁</string>
+    <string name="rear_light_notify_summary">收到新通知时呼吸灯闪烁提示</string>
+    <string name="rear_light_footer">相机与麦克风使用期间的指示灯始终显示，不受开关影响。</string>
+
+    <!-- 音乐律动灯效已合并到闪烁指示灯页面 -->
+    <string name="music_light_title">音乐灯效</string>
+    <string name="music_light_enabled_title">随音乐闪烁</string>
+    <string name="music_light_enabled_summary">播放媒体时，背部指示灯会随音乐节奏闪烁</string>
+    <string name="music_light_apps_mode_title">亮灯范围</string>
+    <string name="music_light_apps_mode_all">所有媒体</string>
+    <string name="music_light_apps_mode_selected">选定应用</string>
+    <string name="music_light_apps_title">应用</string>
+
+    <!-- 设置列表中的简介 -->
+    <string name="touch_entry_summary">提高触摸屏轮询频率</string>
+    <string name="display_enhance_entry_summary">通过独显芯片对视频画质进行增强</string>
+    <string name="rear_light_entry_summary">控制背部 LED 指示灯</string>
+</resources>
