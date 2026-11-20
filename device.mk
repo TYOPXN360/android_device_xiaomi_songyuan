@@ -109,7 +109,7 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.face-V4-ndk.vendor \
     SongyuanFaceEnroll
 
-# Rear LED music light
+# Rear LED music light (service and boot receiver; settings are in XiaomiParts)
 PRODUCT_PACKAGES += \
     SongyuanMusicLight
 

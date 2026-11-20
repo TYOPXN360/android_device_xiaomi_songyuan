@@ -31,6 +31,15 @@
     <string name="rear_light_notify_summary">收到新通知时呼吸灯闪烁提示</string>
     <string name="rear_light_footer">相机与麦克风使用期间的指示灯始终显示，不受开关影响。</string>
 
+    <!-- 音乐律动灯效已合并到闪烁指示灯页面 -->
+    <string name="music_light_title">音乐灯效</string>
+    <string name="music_light_enabled_title">随音乐闪烁</string>
+    <string name="music_light_enabled_summary">播放媒体时，背部指示灯会随音乐节奏闪烁</string>
+    <string name="music_light_apps_mode_title">亮灯范围</string>
+    <string name="music_light_apps_mode_all">所有媒体</string>
+    <string name="music_light_apps_mode_selected">选定应用</string>
+    <string name="music_light_apps_title">应用</string>
+
     <!-- 设置列表中的简介 -->
     <string name="touch_entry_summary">提高触摸屏轮询频率</string>
     <string name="display_enhance_entry_summary">通过独显芯片对视频画质进行增强</string>

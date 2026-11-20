@@ -36,6 +36,29 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="music_light"
+        android:title="@string/music_light_title">
+
+        <SwitchPreferenceCompat
+            android:key="music_light_enabled"
+            android:title="@string/music_light_enabled_title"
+            android:summary="@string/music_light_enabled_summary"
+            android:persistent="false" />
+
+        <ListPreference
+            android:key="music_light_apps_mode"
+            android:title="@string/music_light_apps_mode_title"
+            android:summary="%s"
+            android:persistent="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="music_light_apps"
+        android:title="@string/music_light_apps_title"
+        android:persistent="false" />
+
     <com.android.settingslib.widget.FooterPreference
         android:title="@string/rear_light_footer"
         android:selectable="false" />

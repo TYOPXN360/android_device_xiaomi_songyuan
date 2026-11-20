@@ -35,6 +35,15 @@
     <string name="rear_light_notify_summary">Turn on notification light when a notification arrives</string>
     <string name="rear_light_footer">Camera and microphone indicators are always shown while those are in use.</string>
     <string name="rear_light_entry_summary">Control the LED on the back</string>
+
+    <!-- Music-reactive rear light, merged into the rear light page. -->
+    <string name="music_light_title">Music light</string>
+    <string name="music_light_enabled_title">Pulse with music</string>
+    <string name="music_light_enabled_summary">The rear light follows the music while media plays</string>
+    <string name="music_light_apps_mode_title">Light up for</string>
+    <string name="music_light_apps_mode_all">All media</string>
+    <string name="music_light_apps_mode_selected">Selected apps</string>
+    <string name="music_light_apps_title">Apps</string>
     <!-- List summaries shown in the Settings entry -->
     <string name="touch_entry_summary">Raise the touchscreen polling rate</string>
     <string name="display_enhance_entry_summary">Enhance video quality via a dedicated chip</string>
