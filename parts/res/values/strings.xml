@@ -11,14 +11,8 @@
     <string name="touch_title">Touch Sampling Rate</string>
     <string name="touch_high_sampling_rate_title">High Touch Sampling Rate</string>
     <string name="touch_high_sampling_rate_footer">Increase touchscreen polling rate</string>
-    <!-- Display enhancement settings -->
-    <!-- Wording follows the stock ROM: screen_enhance_engine_title is the page
-         title, screen_enhance_engine_dualDPU_title the switch,
-         screen_enhance_engine_dualDPU_summary its one-line description. -->
-    <string name="display_enhance_title">AI image engine</string>
-    <string name="display_enhance_switch_title">Dual-core visuals</string>
-    <string name="display_enhance_switch_summary">Enhance video quality via a dedicated chip</string>
-    <string name="display_enhance_footer">Turning this off leaves the panel driven by the display processor alone. No reboot required.</string>
+    <!-- Display enhancement settings live in strings_display.xml, where the
+         wording is copied verbatim from the stock ROM. -->
     <!-- Rear light (AW21024) settings. Titles and summaries follow the stock
          strings for this device: lights_title, battery_light_title,
          battery_light_summary and notification_pulse_title. The notification

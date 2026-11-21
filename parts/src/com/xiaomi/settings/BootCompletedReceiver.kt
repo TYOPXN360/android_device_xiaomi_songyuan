@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.xiaomi.settings.display.DisplayEnhanceController
 import com.xiaomi.settings.touch.TouchReportRateService
 
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -22,6 +23,7 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     private fun onBootCompleted(context: Context) {
+        DisplayEnhanceController.restore(context)
     }
 
     private fun onLockedBootCompleted(context: Context) {

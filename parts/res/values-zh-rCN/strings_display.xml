@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Copied from the stock ROM
+         (system_ext/priv-app/Settings, resources screen_enhance_engine_*).
+         Only the category title has no stock counterpart. -->
+    <string name="display_enhance_title">@string/screen_enhance_engine_title</string>
+    <string name="display_enhance_switch_title">@string/screen_enhance_engine_dualDPU_title</string>
+    <string name="display_enhance_switch_summary">@string/screen_enhance_engine_dualDPU_summary</string>
+    <string name="display_enhance_footer">@string/screen_enhance_engine_dualDPU_note</string>
+
+    <string name="display_enhance_category_title">显示增强</string>
+
+    <string name="display_enhance_memc_title">@string/screen_enhance_engine_memc_title</string>
+    <string name="display_enhance_memc_summary">@string/screen_enhance_engine_memc_pic_summary</string>
+
+    <string name="display_enhance_s2h_title">@string/screen_enhance_engine_s2h_title</string>
+    <string name="display_enhance_s2h_summary">@string/screen_enhance_engine_s2h_pic_summary</string>
+
+    <string name="display_enhance_sr_title">@string/screen_enhance_engine_sr_title</string>
+    <string name="display_enhance_sr_summary">@string/screen_enhance_engine_sr_pic_summary</string>
+
+    <string name="display_enhance_ai_title">@string/screen_enhance_engine_ai_title</string>
+    <string name="display_enhance_ai_summary">@string/screen_enhance_engine_ai_pic_summary</string>
+
+    <!-- Verbatim stock strings. -->
+    <string name="screen_enhance_engine_title">AI大师画质引擎</string>
+    <string name="screen_enhance_engine_dualDPU_title">双芯视效</string>
+    <string name="screen_enhance_engine_dualDPU_summary">通过独显芯片对视频画质进行增强</string>
+    <string name="screen_enhance_engine_dualDPU_note">通过独显芯片对视频进行分辨率提升、动态帧率增强和HDR效果优化，显著增强画面的清晰度、平滑度和深度，从而达到更加生动和立体的视觉体验</string>
+
+    <string name="screen_enhance_engine_memc_title">动态画面补偿</string>
+    <string name="screen_enhance_engine_memc_pic_summary">对低帧率视频进行动态插帧处理，使视频画面更加细腻流畅</string>
+
+    <string name="screen_enhance_engine_s2h_title">视频画质增强</string>
+    <string name="screen_enhance_engine_s2h_pic_summary">对普通视频画面进行HDR智能画质增强处理，使画面更加艳丽、生动</string>
+
+    <string name="screen_enhance_engine_sr_title">超分辨率增强</string>
+    <string name="screen_enhance_engine_sr_pic_summary">对低分辨率图片或视频进行智能分辨率增强处理</string>
+
+    <string name="screen_enhance_engine_ai_title">AI智能场景优化</string>
+    <string name="screen_enhance_engine_ai_pic_summary">智能识别画面内容（植物、动物、建筑、风景等），动态调节屏幕显示效果</string>
+</resources>

@@ -12,11 +12,8 @@
     <string name="touch_high_sampling_rate_title">高触摸采样率</string>
     <string name="touch_high_sampling_rate_footer">提高触摸屏的轮询频率</string>
 
-    <!-- Display enhancement settings -->
-    <string name="display_enhance_title">AI大师画质引擎</string>
-    <string name="display_enhance_switch_title">双芯视效</string>
-    <string name="display_enhance_switch_summary">通过独显芯片对视频画质进行增强</string>
-    <string name="display_enhance_footer">关闭后画面将仅由显示处理器输出，无需重启。</string>
+    <!-- Display enhancement settings live in strings_display.xml, where the
+         wording is copied verbatim from the stock ROM. -->
 
     <!-- Rear light (AW21024) settings. Wording follows the stock ROM:
          lights_title, battery_light_title, battery_light_summary and

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Strings below are copied from the stock ROM
+         (system_ext/priv-app/Settings, resources screen_enhance_engine_*) so the
+         page reads the same as on HyperOS. Only the footer and the category
+         title have no stock counterpart and are written for this port. -->
+    <string name="display_enhance_title">@string/screen_enhance_engine_title</string>
+    <string name="display_enhance_switch_title">@string/screen_enhance_engine_dualDPU_title</string>
+    <string name="display_enhance_switch_summary">@string/screen_enhance_engine_dualDPU_summary</string>
+    <string name="display_enhance_footer">@string/screen_enhance_engine_dualDPU_note</string>
+
+    <string name="display_enhance_category_title">Display enhancement</string>
+
+    <string name="display_enhance_memc_title">@string/screen_enhance_engine_memc_title</string>
+    <string name="display_enhance_memc_summary">@string/screen_enhance_engine_memc_pic_summary</string>
+
+    <string name="display_enhance_s2h_title">@string/screen_enhance_engine_s2h_title</string>
+    <string name="display_enhance_s2h_summary">@string/screen_enhance_engine_s2h_pic_summary</string>
+
+    <string name="display_enhance_sr_title">@string/screen_enhance_engine_sr_title</string>
+    <string name="display_enhance_sr_summary">@string/screen_enhance_engine_sr_pic_summary</string>
+
+    <string name="display_enhance_ai_title">@string/screen_enhance_engine_ai_title</string>
+    <string name="display_enhance_ai_summary">@string/screen_enhance_engine_ai_pic_summary</string>
+
+    <!-- Verbatim stock strings. -->
+    <string name="screen_enhance_engine_title">AI image engine</string>
+    <string name="screen_enhance_engine_dualDPU_title">Dual-core visuals</string>
+    <string name="screen_enhance_engine_dualDPU_summary">Enhance video quality via a dedicated chip</string>
+    <string name="screen_enhance_engine_dualDPU_note">Using a dedicated chip improves video resolution, enhances frame rate, and optimizes HDR. This provides a more vivid, smoother experience.</string>
+
+    <string name="screen_enhance_engine_memc_title">MEMC</string>
+    <string name="screen_enhance_engine_memc_pic_summary">Add additional frames to videos to make content appear smooth and transitions lively. </string>
+
+    <string name="screen_enhance_engine_s2h_title">AI HDR enhancement</string>
+    <string name="screen_enhance_engine_s2h_pic_summary">Process videos using HDR effects to bring out more detail in the lighter and darker areas. </string>
+
+    <string name="screen_enhance_engine_sr_title">Super resolution</string>
+    <string name="screen_enhance_engine_sr_pic_summary">Upscale the resolution of images and videos. </string>
+
+    <string name="screen_enhance_engine_ai_title">AI Image Enhancement</string>
+    <string name="screen_enhance_engine_ai_pic_summary">Identify objects (e.g. plants, animals, buildings) and dynamically adjust display effects. </string>
+</resources>
