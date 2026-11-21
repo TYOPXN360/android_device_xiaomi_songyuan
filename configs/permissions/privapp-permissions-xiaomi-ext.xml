@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <!-- XiaomiParts -->
+    <privapp-permissions package="com.xiaomi.settings">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+
+    <!-- SongyuanMusicLight -->
+    <privapp-permissions package="org.lineageos.musiclight">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+</permissions>

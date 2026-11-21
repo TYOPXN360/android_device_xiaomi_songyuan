@@ -71,6 +71,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-euiccgoogle.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-euiccgoogle.xml
 
+# XiaomiParts and SongyuanMusicLight are privileged apps on system_ext.  Their
+# signature|privileged permissions must be allowlisted, otherwise system_server
+# aborts in AppIdPermissionPolicy.onSystemReady() on user builds.
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-xiaomi-ext.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-xiaomi-ext.xml
+
 
 # Properties
 PRODUCT_COPY_FILES += \
