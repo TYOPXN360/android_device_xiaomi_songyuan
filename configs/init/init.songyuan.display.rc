@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# Novatek visual display processor (the AI display enhancement chip).
+#
+# The stock init script starts hal_visdisplaysrv_default unconditionally as
+# part of class hal and the service has no runtime knob of its own, so the
+# Settings switch drives it from here: persist.sys.disp_enhance is written by
+# the XiaomiParts display enhancement page and these triggers turn the HAL on
+# or off.
+#
+# This file must live on /system, not /vendor: persist.sys.disp_enhance is a
+# system_internal_prop and vendor_init is never allowed to read system props.
+# The system init context can read it and can still start/stop the vendor
+# service by name.
+on property:persist.sys.disp_enhance=1
+    start hal_visdisplaysrv_default
+
+on property:persist.sys.disp_enhance=0
+    stop hal_visdisplaysrv_default
