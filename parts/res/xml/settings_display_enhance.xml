@@ -12,29 +12,32 @@
         android:title="@string/display_enhance_switch_title"
         android:summary="@string/display_enhance_switch_summary" />
 
+    <!-- A titled PreferenceCategory draws the child rows as one card, the same
+         way accessibility_audio_adjustment.xml and settings_rear_light.xml do.
+         SwitchPreferenceCompat is what AOSP uses for these toggles; a
+         CheckBoxPreference would render a checkbox instead of a switch. -->
     <PreferenceCategory
         android:key="display_enhance_category"
-        android:title="@string/display_enhance_category_title">
+        android:title="@string/display_enhance_category_title"
+        android:persistent="false">
 
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="display_enhance_memc"
             android:title="@string/display_enhance_memc_title"
-            android:summary="@string/display_enhance_memc_summary" />
+            android:summary="@string/display_enhance_memc_summary"
+            android:dependency="display_enhance_ai_enable" />
 
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="display_enhance_s2h"
             android:title="@string/display_enhance_s2h_title"
-            android:summary="@string/display_enhance_s2h_summary" />
+            android:summary="@string/display_enhance_s2h_summary"
+            android:dependency="display_enhance_ai_enable" />
 
-        <CheckBoxPreference
+        <SwitchPreferenceCompat
             android:key="display_enhance_sr"
             android:title="@string/display_enhance_sr_title"
-            android:summary="@string/display_enhance_sr_summary" />
-
-        <CheckBoxPreference
-            android:key="display_enhance_ai"
-            android:title="@string/display_enhance_ai_title"
-            android:summary="@string/display_enhance_ai_summary" />
+            android:summary="@string/display_enhance_sr_summary"
+            android:dependency="display_enhance_ai_enable" />
 
     </PreferenceCategory>
 

@@ -86,6 +86,9 @@ object DisplayEnhanceController {
     fun isS2hEnabled(context: Context): Boolean = feature(context, KEY_S2H, true)
     fun isSrEnabled(context: Context): Boolean = feature(context, KEY_SR, true)
 
+    /** Generic lookup so the fragment can iterate its switch keys. */
+    fun isFeatureEnabled(context: Context, key: String): Boolean = feature(context, key, true)
+
     private fun feature(context: Context, key: String, default: Boolean): Boolean =
         Settings.System.getIntForUser(
             context.contentResolver, key, if (default) 1 else 0, UserHandle.USER_CURRENT,
