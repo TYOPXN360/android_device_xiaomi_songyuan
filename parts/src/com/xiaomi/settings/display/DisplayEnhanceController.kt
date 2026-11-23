@@ -163,10 +163,38 @@ object DisplayEnhanceController {
         }
     }
 
+    /**
+     * The Novatek driver only accepts a scene whose TargetFPS matches the panel
+     * timing it is currently running. vis_dsi_isPanelFpsMatch() has a fixed
+     * pairing table:
+     *
+     *   60 -> 60Hz   90 -> 90Hz   120 -> 120Hz   144 -> 144Hz   165 -> 165Hz
+     *
+     * and anything else is rejected with
+     *   "TX0 FPS does not match the panel fps"
+     * followed by 0xdeadfffe from the setSceneMode ioctl.
+     *
+     * So the value we send has to be the panel's own refresh rate, snapped onto
+     * that table. Reports above 165 come from the adaptive peak (the panel idles
+     * lower while showing video), so those fall back to 60, which is what every
+     * stock video preset uses.
+     */
     private fun targetFps(context: Context): Int {
-        val dm = context.getSystemService(DisplayManager::class.java) ?: return 120
-        val rate = dm.getDisplay(Display.DEFAULT_DISPLAY)?.refreshRate ?: 60f
-        return if (rate > 60f) 120 else 60
+        val dm = context.getSystemService(DisplayManager::class.java) ?: return 60
+        val display = dm.getDisplay(Display.DEFAULT_DISPLAY) ?: return 60
+        val rate = display.mode?.refreshRate ?: display.refreshRate
+        val rounded = Math.round(rate)
+
+        return when {
+            rounded <= 60 -> 60
+            rounded <= 90 -> 90
+            rounded <= 120 -> 120
+            rounded <= 144 -> 144
+            rounded <= 165 -> 165
+            // 185Hz and friends only exist as an adaptive ceiling; the panel
+            // runs at 60 while a video scene is active.
+            else -> 60
+        }
     }
 
     private fun notifyFrameMaster(featureId: Int, status: Int, value: Int, cmd: String) {
