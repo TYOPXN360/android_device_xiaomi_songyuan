@@ -122,8 +122,24 @@ object DisplayEnhanceController {
             return
         }
         startMonitoring(context)
-        Thread { push(context, true) }.start()
+        Thread {
+            push(context, true)
+            // BOOT_COMPLETED lands while the boot animation is still driving the
+            // panel at 185Hz, and the Novatek driver rejects a scene whose timing
+            // does not match the panel. Once the launcher is up the panel settles
+            // on 60Hz, so retry instead of leaving the IC in standby until the
+            // user toggles the switch.
+            for (delayMs in RETRY_DELAYS_MS) {
+                Thread.sleep(delayMs)
+                if (!isEnabled(context)) return@Thread
+                Log.i(TAG, "re-applying the scene after ${delayMs}ms")
+                push(context, true)
+            }
+        }.start()
     }
+
+    /** Delays used by [restore] to catch the panel after the boot animation. */
+    private val RETRY_DELAYS_MS = longArrayOf(3000, 6000)
 
     /**
      * FrameMaster keeps a scene until it is told otherwise, but the panel only
