@@ -1,6 +1,5 @@
-## TODO: carried over from myron (Redmi K90 Pro Max). Regenerate against a
-## songyuan dump with ./extract-files.py before building — the camera sensor,
-## tuning and touch firmware entries below are myron's and will not resolve.
+## Extracted from the songyuan OS4.0.8.0.XGNCNXM dump with ./extract-files.py.
+## Every entry, optional ones included, resolves against that dump.
 
 # ACDBs
 odm/etc/acdbdata/Mi/Ext_AiOff_fixed.eai

@@ -1,4 +1,4 @@
-## Firmware from POCO F9 Ultra (songyuan_eea_global OS3.0.308.0.WGNEUXM).
+## Firmware from songyuan OS4.0.8.0.XGNCNXM.
 
 # Firmware
 abl.img;AB
