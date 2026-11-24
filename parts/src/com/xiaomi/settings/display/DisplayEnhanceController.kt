@@ -125,24 +125,8 @@ object DisplayEnhanceController {
             return
         }
         startMonitoring(context)
-        Thread {
-            push(context, true)
-            // BOOT_COMPLETED lands while the boot animation is still driving the
-            // panel at 185Hz, and the Novatek driver rejects a scene whose timing
-            // does not match the panel. The panel drops to 60Hz once the launcher
-            // is idle, so keep retrying for a while instead of leaving the IC in
-            // standby until the user toggles the switch.
-            for (delayMs in RETRY_DELAYS_MS) {
-                Thread.sleep(delayMs)
-                if (!isEnabled(context)) return@Thread
-                Log.i(TAG, "re-applying the scene after ${delayMs}ms")
-                push(context, true)
-            }
-        }.start()
+        Thread { push(context, true) }.start()
     }
-
-    /** Delays used by [restore] to catch the panel after the boot animation. */
-    private val RETRY_DELAYS_MS = longArrayOf(10_000, 10_000, 20_000)
 
     /**
      * FrameMaster keeps a scene until it is told otherwise, but the panel only
@@ -173,9 +157,8 @@ object DisplayEnhanceController {
         dm.registerDisplayListener(listener, null)
         displayListener = listener
 
-        // The panel is back on the 60Hz timing whenever the screen turns on, so
-        // re-apply then as well: the boot-time attempt usually runs against the
-        // 185Hz boot animation and gets rejected.
+        // The DSI power-on that follows a screen wake is exactly where the panel
+        // runs at the rate the driver will validate, so re-apply then too.
         app.registerReceiver(
             object : BroadcastReceiver() {
                 override fun onReceive(ctx: Context, intent: Intent) {
@@ -244,11 +227,13 @@ object DisplayEnhanceController {
      * followed by 0xdeadfffe from the setSceneMode ioctl. The tolerance is zero,
      * so the value has to be the timing the panel is running *right now*.
      *
-     * 185Hz is the panel's adaptive peak: it is the display mode, but the
-     * timing falls back to 60Hz whenever the screen shows static or video
-     * content, and a request sent while it idles at 60Hz is rejected if it
-     * carries the 185Hz slot. Video is always a 60Hz scene, so anything above
-     * 165 is mapped onto 60 here.
+     * Every push happens on a display transition (boot, screen wake, switch
+     * toggle), and at that moment the panel runs at the display mode's rate:
+     * 185Hz on the boot animation and on the wake transition, 60Hz when the
+     * mode is 60Hz. The mode is therefore the only usable hint; once the screen
+     * settles the panel may drop to 60Hz while the mode stays 185Hz, which the
+     * DisplayListener in [startMonitoring] covers by re-pushing on mode
+     * changes.
      */
     private fun targetFps(context: Context): Int {
         val dm = context.getSystemService(DisplayManager::class.java) ?: return 60
@@ -266,7 +251,7 @@ object DisplayEnhanceController {
             rounded <= 120 -> 120
             rounded <= 144 -> 144
             rounded <= 165 -> 165
-            else -> 60
+            else -> 185
         }
     }
 
