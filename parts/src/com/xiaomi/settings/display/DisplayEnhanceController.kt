@@ -5,7 +5,10 @@
 
 package com.xiaomi.settings.display
 
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.hardware.display.DisplayManager
 import android.os.IBinder
 import android.os.Parcel
@@ -126,9 +129,9 @@ object DisplayEnhanceController {
             push(context, true)
             // BOOT_COMPLETED lands while the boot animation is still driving the
             // panel at 185Hz, and the Novatek driver rejects a scene whose timing
-            // does not match the panel. Once the launcher is up the panel settles
-            // on 60Hz, so retry instead of leaving the IC in standby until the
-            // user toggles the switch.
+            // does not match the panel. The panel drops to 60Hz once the launcher
+            // is idle, so keep retrying for a while instead of leaving the IC in
+            // standby until the user toggles the switch.
             for (delayMs in RETRY_DELAYS_MS) {
                 Thread.sleep(delayMs)
                 if (!isEnabled(context)) return@Thread
@@ -139,7 +142,7 @@ object DisplayEnhanceController {
     }
 
     /** Delays used by [restore] to catch the panel after the boot animation. */
-    private val RETRY_DELAYS_MS = longArrayOf(3000, 6000)
+    private val RETRY_DELAYS_MS = longArrayOf(10_000, 10_000, 20_000)
 
     /**
      * FrameMaster keeps a scene until it is told otherwise, but the panel only
@@ -169,6 +172,19 @@ object DisplayEnhanceController {
         }
         dm.registerDisplayListener(listener, null)
         displayListener = listener
+
+        // The panel is back on the 60Hz timing whenever the screen turns on, so
+        // re-apply then as well: the boot-time attempt usually runs against the
+        // 185Hz boot animation and gets rejected.
+        app.registerReceiver(
+            object : BroadcastReceiver() {
+                override fun onReceive(ctx: Context, intent: Intent) {
+                    if (!isEnabled(ctx)) return
+                    Thread { push(app, true) }.start()
+                }
+            },
+            IntentFilter(Intent.ACTION_SCREEN_ON),
+        )
     }
 
     private fun push(context: Context, enabled: Boolean) {
