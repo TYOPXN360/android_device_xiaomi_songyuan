@@ -99,6 +99,7 @@ object DisplayEnhanceController {
             context.contentResolver, SETTING_KEY, if (enabled) 1 else 0,
             UserHandle.USER_CURRENT,
         )
+        startMonitoring(context)
         Thread { push(context, enabled) }.start()
     }
 
@@ -107,6 +108,7 @@ object DisplayEnhanceController {
             context.contentResolver, key, if (enabled) 1 else 0, UserHandle.USER_CURRENT,
         )
         if (isEnabled(context)) {
+            startMonitoring(context)
             Thread { push(context, true) }.start()
         }
     }
@@ -119,12 +121,44 @@ object DisplayEnhanceController {
             notifyFrameMaster(FEATURE_VIDEO_MEMC, 0, 120, BYPASS_CMD)
             return
         }
+        startMonitoring(context)
         Thread { push(context, true) }.start()
+    }
+
+    /**
+     * FrameMaster keeps a scene until it is told otherwise, but the panel only
+     * matches a scene while it actually runs at that timing. Follow the display
+     * and re-push whenever the active rate moves to a different table entry, so
+     * a video that drops the panel to 60Hz picks the scene up on its own.
+     */
+    private var displayListener: DisplayManager.DisplayListener? = null
+
+    @Volatile
+    private var lastPushedFps = -1
+
+    fun startMonitoring(context: Context) {
+        if (displayListener != null) return
+        val app = context.applicationContext
+        val dm = app.getSystemService(DisplayManager::class.java) ?: return
+        val listener = object : DisplayManager.DisplayListener {
+            override fun onDisplayAdded(displayId: Int) = Unit
+            override fun onDisplayRemoved(displayId: Int) = Unit
+            override fun onDisplayChanged(displayId: Int) {
+                if (displayId != Display.DEFAULT_DISPLAY) return
+                if (!isEnabled(app)) return
+                val fps = targetFps(app)
+                if (fps == lastPushedFps) return
+                Thread { push(app, true) }.start()
+            }
+        }
+        dm.registerDisplayListener(listener, null)
+        displayListener = listener
     }
 
     private fun push(context: Context, enabled: Boolean) {
         try {
             if (!enabled) {
+                lastPushedFps = 0
                 notifyFrameMaster(FEATURE_VIDEO_MEMC, 0, targetFps(context), BYPASS_CMD)
                 apply(false)
                 return
@@ -136,6 +170,8 @@ object DisplayEnhanceController {
             Thread.sleep(350)
 
             val fps = targetFps(context)
+            lastPushedFps = fps
+
             val cmd = buildString {
                 append("\"")
                 append("Category:1")
@@ -166,24 +202,31 @@ object DisplayEnhanceController {
     /**
      * The Novatek driver only accepts a scene whose TargetFPS matches the panel
      * timing it is currently running. vis_dsi_isPanelFpsMatch() has a fixed
-     * pairing table:
+     * pairing table (kernel index in brackets):
      *
-     *   60 -> 60Hz   90 -> 90Hz   120 -> 120Hz   144 -> 144Hz   165 -> 165Hz
+     *   60 -> 60Hz [2]   90 -> 90Hz [3]   120 -> 120Hz [4]
+     *   144 -> 144Hz [5] 165 -> 165Hz [6] 185 -> 185Hz [7]
      *
      * and anything else is rejected with
      *   "TX0 FPS does not match the panel fps"
-     * followed by 0xdeadfffe from the setSceneMode ioctl.
+     * followed by 0xdeadfffe from the setSceneMode ioctl. The tolerance is zero,
+     * so the value has to be the timing the panel is running *right now*.
      *
-     * So the value we send has to be the panel's own refresh rate, snapped onto
-     * that table. Reports above 165 come from the adaptive peak (the panel idles
-     * lower while showing video), so those fall back to 60, which is what every
-     * stock video preset uses.
+     * 185Hz is the panel's adaptive peak: it is the display mode, but the
+     * timing falls back to 60Hz whenever the screen shows static or video
+     * content, and a request sent while it idles at 60Hz is rejected if it
+     * carries the 185Hz slot. Video is always a 60Hz scene, so anything above
+     * 165 is mapped onto 60 here.
      */
     private fun targetFps(context: Context): Int {
         val dm = context.getSystemService(DisplayManager::class.java) ?: return 60
         val display = dm.getDisplay(Display.DEFAULT_DISPLAY) ?: return 60
-        val rate = display.mode?.refreshRate ?: display.refreshRate
-        val rounded = Math.round(rate)
+        val modeRate = display.mode?.refreshRate ?: display.refreshRate
+        Log.i(
+            TAG,
+            "refresh rates: active=${display.refreshRate} mode=$modeRate",
+        )
+        val rounded = Math.round(modeRate)
 
         return when {
             rounded <= 60 -> 60
@@ -191,8 +234,6 @@ object DisplayEnhanceController {
             rounded <= 120 -> 120
             rounded <= 144 -> 144
             rounded <= 165 -> 165
-            // 185Hz and friends only exist as an adaptive ceiling; the panel
-            // runs at 60 while a video scene is active.
             else -> 60
         }
     }
