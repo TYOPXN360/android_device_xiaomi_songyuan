@@ -79,6 +79,33 @@ def blob_fixup_miface_weak_nonsecure(
             f.seek(0)
             f.write(content)
 
+def blob_fixup_camera_reconfig(
+    ctx: BlobFixupCtx,
+    file: File,
+    file_path: str,
+    *args,
+    **kwargs,
+):
+    # adapter::AdapterDeviceSession::overrideReconfigurationStatus() only ever
+    # answers "no reconfiguration needed" for com.xiaomi.liveshot.enabled and
+    # returns 1 for every other tag set. Third-party Camera2 clients do not send
+    # the Xiaomi vendor tags, so their session was torn down and recreated on
+    # almost every request: ~3 fps preview and an autofocus that restarted
+    # before it could move the lens.
+    # Return "no reconfiguration needed" instead; the framework still calls
+    # configureStreams() explicitly when an app really changes its streams.
+    patches = [
+        (0x6C5AC, b'\x33\x00\x80\x52', b'\xf3\x03\x1f\x2a'),  # mov w19, #1 -> mov w19, wzr
+    ]
+    with open(file_path, 'rb+') as f:
+        content = bytearray(f.read())
+        if all(content[o:o + 4] == old for o, old, _ in patches):
+            for o, _, new in patches:
+                content[o:o + 4] = new
+            f.seek(0)
+            f.write(content)
+            f.truncate()
+
 def blob_fixup_unpack_jni_libs(
     ctx: BlobFixupCtx,
     file: File,
@@ -216,6 +243,8 @@ blob_fixups: blob_fixups_user_type = {
         .call(blob_fixup_gme_ois_read),
     'odm/lib64/libmiface.so': blob_fixup()
         .call(blob_fixup_miface_weak_nonsecure),
+    'odm/lib64/libmicamera_adapter.so': blob_fixup()
+        .call(blob_fixup_camera_reconfig),
     'product/app/XMRemoteController/XMRemoteController.apk': blob_fixup()
         .call(blob_fixup_unpack_jni_libs),
 }  # fmt: skip
