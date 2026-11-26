@@ -123,6 +123,49 @@ def blob_fixup_unpack_jni_libs(
                     f.write(apk.read(name))
 
 
+def blob_fixup_ofe_roi_cover_check(
+    ctx: BlobFixupCtx,
+    file: File,
+    file_path: str,
+    *args,
+    **kwargs,
+):
+    # libcamxofehwl.so (CamX OFE hw pipeline, NcLib GeoLib linked in) validates
+    # every OFE output buffer against the ROI derived for it and fails with
+    # "NcLib OFE output buffer[%u] not covered by ROI" when
+    #     ROI + 0.0101f < buffer size
+    # The compare is emitted once per output port; port 2 is the one that trips
+    # on songyuan:
+    #   sensor mode (songyuan_wide_a res index 9)  4096x2304   (16:9)
+    #   preview stream                              1568x720   (2.17778)
+    #   derived ROI height  1880   (212 + 1880 + 212 = 2304)
+    #   derived ROI width   1880 * 1568/720 = 4094.2222
+    #   symmetric x offset  (4096 - 4094.2222)/2 = 0.8889
+    # That ROI is geometrically valid (spans 0.889 .. 4095.11, inside the 4096
+    # wide input) but it is not pixel-integer, so the 0.0101 tolerance rejects
+    # it; CHI then counts consecutive recoveries and aborts the provider.
+    # HyperOS never hits this because its camera service publishes
+    # com.xiaomi.sessionparams.previewFullSize, which the OEM ROI generator
+    # turns into an integer crop. AOSP's SessionConfigurationUtils filters that
+    # tag out of the session parameters, and the HAL does not consume it from
+    # the per-frame request path either.
+    # Drop the strict compare for output port 2 only. NcLib still clamps the
+    # crop to the buffer, and preview/capture stay correct (verified on device:
+    # 524 preview frames, no GeoLib error, no SIGABRT).
+    patches = [
+        (0x17B074, b'\xe4\x2e\x00\x54', b'\x1f\x20\x03\xd5'),  # b.mi -> nop (port 2 width)
+        (0x17B088, b'\x44\x2e\x00\x54', b'\x1f\x20\x03\xd5'),  # b.mi -> nop (port 2 height)
+    ]
+    with open(file_path, 'rb+') as f:
+        content = bytearray(f.read())
+        if all(content[o:o + 4] == old for o, old, _ in patches):
+            for o, _, new in patches:
+                content[o:o + 4] = new
+            f.seek(0)
+            f.write(content)
+            f.truncate()
+
+
 blob_fixups: blob_fixups_user_type = {
     (
         'odm/etc/camera/enhance_motiontuning.xml',
@@ -245,6 +288,8 @@ blob_fixups: blob_fixups_user_type = {
         .call(blob_fixup_miface_weak_nonsecure),
     'odm/lib64/libmicamera_adapter.so': blob_fixup()
         .call(blob_fixup_camera_reconfig),
+    'odm/lib64/libcamxofehwl.so': blob_fixup()
+        .call(blob_fixup_ofe_roi_cover_check),
     'product/app/XMRemoteController/XMRemoteController.apk': blob_fixup()
         .call(blob_fixup_unpack_jni_libs),
 }  # fmt: skip
