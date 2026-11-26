@@ -1905,3 +1905,16 @@ product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteC
 product/app/MiSound/MiSound.apk;PRESIGNED;SKIPAPKCHECKS
 vendor/lib64/libmisoundsa_pad.so
 odm/lib64/libhta_hexagon_runtime_qnn.so
+
+# Ozo spatial audio effect stack (declared by audio_effects_config.xml as
+# "ozoaidl"). Missing on the device while the config already referenced it.
+system_ext/lib/com.android.ozoaudio.notify-V1-cpp.so
+vendor/lib64/soundfx/libozoaidl.so
+vendor/lib64/libav_ozoencoder.so
+vendor/lib64/com.android.ozoaudio.notify-V1-ndk.so
+vendor/lib64/libozoaudio.so
+vendor/lib64/libozoaudioutils.so
+vendor/lib64/libozocapability.so
+vendor/lib64/libozotensorflowlite_c.so
+vendor/etc/init/ozonotify-1.0-service.rc
+vendor/etc/vintf/manifest/ozonotify-1.0.xml
