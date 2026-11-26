@@ -1900,3 +1900,8 @@ vendor/etc/external_camera_config.xml
 
 # Mi Remote (stock data-app), JNI libs unpacked by extract-files.py
 product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteController/XMRemoteController.apk;PRESIGNED;SKIPAPKCHECKS
+
+# MiSound (Xiaomi audio effects UI, stock-signed) and the two blobs it needs
+product/app/MiSound/MiSound.apk;PRESIGNED;SKIPAPKCHECKS
+vendor/lib64/libmisoundsa_pad.so
+odm/lib64/libhta_hexagon_runtime_qnn.so
