@@ -1917,4 +1917,3 @@ vendor/lib64/libozoaudioutils.so
 vendor/lib64/libozocapability.so
 vendor/lib64/libozotensorflowlite_c.so
 vendor/etc/init/ozonotify-1.0-service.rc
-vendor/etc/vintf/manifest/ozonotify-1.0.xml

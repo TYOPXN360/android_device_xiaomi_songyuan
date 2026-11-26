@@ -120,6 +120,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SongyuanMusicLight
 
+# MiSound (Xiaomi audio effects UI, stock-signed presigned APK)
+PRODUCT_PACKAGES += \
+    MiSound
+
+# Ozo notify HAL manifest fragment (the service binary itself is not shipped
+# by stock either; the fragment only keeps the VINTF declaration in place)
+PRODUCT_PACKAGES += \
+    ozonotify-1.0.xml
+
 # Mi Remote (JNI libs unpacked from the presigned APK by extract-files.py)
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*.so,vendor/xiaomi/songyuan/proprietary/product/app/XMRemoteController/lib/arm64,$(TARGET_COPY_OUT_PRODUCT)/app/XMRemoteController/lib/arm64)
