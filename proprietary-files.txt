@@ -1909,7 +1909,7 @@ odm/lib64/libhta_hexagon_runtime_qnn.so
 # Ozo spatial audio effect stack (declared by audio_effects_config.xml as
 # "ozoaidl"). Missing on the device while the config already referenced it.
 system_ext/lib/com.android.ozoaudio.notify-V1-cpp.so
-vendor/lib64/soundfx/libozoaidl.so
+vendor/lib64/soundfx/libozoaidl.so;DISABLE_DEPS
 vendor/lib64/libav_ozoencoder.so
 vendor/lib64/com.android.ozoaudio.notify-V1-ndk.so
 vendor/lib64/libozoaudio.so
