@@ -124,10 +124,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MiSound
 
-# Ozo notify HAL manifest fragment (the service binary itself is not shipped
-# by stock either; the fragment only keeps the VINTF declaration in place)
-PRODUCT_PACKAGES += \
-    ozonotify-1.0.xml
+# Ozo notify HAL manifest is intentionally not shipped: com.android.ozoaudio.notify
+# is a Xiaomi-private HAL missing from the AOSP framework compatibility matrix, so
+# declaring it fails check_target_files_vintf and blocks OTA packaging. Stock does
+# not ship the service binary either (its .rc is disabled + oneshot).
 
 # Mi Remote (JNI libs unpacked from the presigned APK by extract-files.py)
 PRODUCT_COPY_FILES += \
