@@ -120,14 +120,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SongyuanMusicLight
 
-# MiSound (Xiaomi audio effects UI, stock-signed presigned APK)
-PRODUCT_PACKAGES += \
-    MiSound
-
-# Ozo notify HAL manifest is intentionally not shipped: com.android.ozoaudio.notify
-# is a Xiaomi-private HAL missing from the AOSP framework compatibility matrix, so
-# declaring it fails check_target_files_vintf and blocks OTA packaging. Stock does
-# not ship the service binary either (its .rc is disabled + oneshot).
+# MiSound / Ozo audio effect blobs are declared in
+# vendor/xiaomi/songyuan/proprietary-files.txt, so Android.bp and
+# songyuan-vendor.mk are generated from it. Do not add them here by hand.
+# ozonotify-1.0.xml is deliberately absent from the list: the HAL is
+# Xiaomi-private and not in the AOSP framework compatibility matrix, which
+# would fail check_target_files_vintf and block OTA packaging.
 
 # Mi Remote (JNI libs unpacked from the presigned APK by extract-files.py)
 PRODUCT_COPY_FILES += \
