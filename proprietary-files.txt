@@ -1902,7 +1902,7 @@ vendor/etc/external_camera_config.xml
 product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteController/XMRemoteController.apk;PRESIGNED;SKIPAPKCHECKS
 
 # MiSound (Xiaomi audio effects UI, stock-signed) and the two blobs it needs
-product/app/MiSound/MiSound.apk;PRESIGNED;SKIPAPKCHECKS
+product/app/MiSound/MiSound.apk;PRESIGNED
 vendor/lib64/libmisoundsa_pad.so
 odm/lib64/libhta_hexagon_runtime_qnn.so;DISABLE_CHECKELF
 
