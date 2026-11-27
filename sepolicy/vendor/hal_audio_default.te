@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+# The misoundfx effect HAL persists its parameters (EQ, 3D surround, SoundID,
+# ear canal scan, ...) into persist.vendor.audio.* properties through
+# EffectMiSoundContext::saveParamToProperty. The generic vendor policy only
+# labels those properties vendor_audio_prop and never grants the effect HAL
+# write access, so every save is rejected:
+#
+#   avc: denied { set } for property=persist.vendor.audio.3dsurround.enable
+#        scontext=u:r:hal_audio_default:s0 tcontext=u:object_r:vendor_audio_prop:s0
+#
+# Without the rule the DSP still receives the new value (the effect applies
+# immediately) but the setting is lost on the next reboot.
+set_prop(hal_audio_default, vendor_audio_prop)
