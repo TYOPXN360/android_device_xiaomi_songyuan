@@ -1908,7 +1908,10 @@ odm/lib64/libhta_hexagon_runtime_qnn.so
 
 # Ozo spatial audio effect stack (declared by audio_effects_config.xml as
 # "ozoaidl"). Missing on the device while the config already referenced it.
-system_ext/lib/com.android.ozoaudio.notify-V1-cpp.so
+# com.android.ozoaudio.notify-V1-cpp.so is 32-bit (system_ext/lib) and this
+# build has no TARGET_2ND_ARCH, so the module never gets generated and
+# PRODUCT_PACKAGES would report it as a non-existent module. 64-bit Ozo
+# consumers use the -V1-ndk variant under vendor/lib64 instead.
 vendor/lib64/soundfx/libozoaidl.so;DISABLE_DEPS
 vendor/lib64/libav_ozoencoder.so
 vendor/lib64/com.android.ozoaudio.notify-V1-ndk.so
