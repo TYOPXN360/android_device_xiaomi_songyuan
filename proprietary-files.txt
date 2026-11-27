@@ -1904,7 +1904,7 @@ product/data-app/XMRemoteController/XMRemoteController.apk:product/app/XMRemoteC
 # MiSound (Xiaomi audio effects UI, stock-signed) and the two blobs it needs
 product/app/MiSound/MiSound.apk;PRESIGNED;SKIPAPKCHECKS
 vendor/lib64/libmisoundsa_pad.so
-odm/lib64/libhta_hexagon_runtime_qnn.so
+odm/lib64/libhta_hexagon_runtime_qnn.so;DISABLE_CHECKELF
 
 # Ozo spatial audio effect stack (declared by audio_effects_config.xml as
 # "ozoaidl"). Missing on the device while the config already referenced it.
