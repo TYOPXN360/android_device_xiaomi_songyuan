@@ -41,4 +41,14 @@
     <!-- List summaries shown in the Settings entry -->
     <string name="touch_entry_summary">Raise the touchscreen polling rate</string>
     <string name="display_enhance_entry_summary">Enhance video quality via a dedicated chip</string>
+
+    <!-- Sound effects (MiSound) entry -->
+    <string name="sound_effect_title">Sound effects</string>
+    <string name="sound_effect_entry_summary">Equalizer, Dirac and headset effects</string>
+    <string name="sound_effect_equalizer_title">Equalizer</string>
+    <string name="sound_effect_equalizer_summary">Ten band equalizer with presets</string>
+    <string name="sound_effect_dirac_title">Dirac audio</string>
+    <string name="sound_effect_dirac_summary">Dirac sound enhancement</string>
+    <string name="sound_effect_headset_title">Headset settings</string>
+    <string name="sound_effect_headset_summary">Headset type and compensation</string>
 </resources>

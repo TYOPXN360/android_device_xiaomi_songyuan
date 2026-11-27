@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="sound_effect_equalizer"
+        android:title="@string/sound_effect_equalizer_title"
+        android:summary="@string/sound_effect_equalizer_summary" />
+
+    <Preference
+        android:key="sound_effect_dirac"
+        android:title="@string/sound_effect_dirac_title"
+        android:summary="@string/sound_effect_dirac_summary" />
+
+    <Preference
+        android:key="sound_effect_headset"
+        android:title="@string/sound_effect_headset_title"
+        android:summary="@string/sound_effect_headset_summary" />
+
+</PreferenceScreen>

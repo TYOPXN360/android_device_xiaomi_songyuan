@@ -41,4 +41,14 @@
     <string name="touch_entry_summary">提高触摸屏轮询频率</string>
     <string name="display_enhance_entry_summary">通过独显芯片对视频画质进行增强</string>
     <string name="rear_light_entry_summary">控制背部 LED 指示灯</string>
+
+    <!-- 音质音效（MiSound）入口 -->
+    <string name="sound_effect_title">音质音效</string>
+    <string name="sound_effect_entry_summary">均衡器、Dirac 与耳机音效</string>
+    <string name="sound_effect_equalizer_title">均衡器</string>
+    <string name="sound_effect_equalizer_summary">十段均衡器与预设</string>
+    <string name="sound_effect_dirac_title">Dirac 音效</string>
+    <string name="sound_effect_dirac_summary">Dirac 声音增强</string>
+    <string name="sound_effect_headset_title">耳机设置</string>
+    <string name="sound_effect_headset_summary">耳机类型与听感补偿</string>
 </resources>

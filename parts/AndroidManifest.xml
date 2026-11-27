@@ -100,6 +100,25 @@
                 android:value="@string/rear_light_entry_summary" />
         </activity>
 
+        <activity
+            android:name=".sound.SoundEffectSettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:label="@string/sound_effect_title">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.sound" />
+            <meta-data
+                android:name="com.android.settings.order"
+                android:value="-7" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:value="@string/sound_effect_entry_summary" />
+        </activity>
+
     </application>
 </manifest>
 
