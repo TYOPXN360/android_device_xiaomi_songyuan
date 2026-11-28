@@ -35,3 +35,19 @@ ro.vendor.qtvm.auto.start=oemvm
 
 # Face
 ro.vendor.miface.started=true
+
+# MiSound audio effects.
+#
+# HeadsetSettingsActivity picks its fragment with these two:
+#   z.m.F() = getBoolean("ro.vendor.audio.fweffect", false)
+#   z.m.B() = getBoolean("ro.vendor.audio.bose.effect.enable", false)
+# both true -> the BOSE variant (classic/balance + 3D surround), which is the
+# page HyperOS shows. Stock carries exactly these values in vendor.prop.
+ro.vendor.audio.fweffect=true
+ro.vendor.audio.bose.effect.enable=true
+ro.vendor.audio.misound.bluetooth.enable=true
+
+# fpsop game effect defaults, same as stock
+persist.vendor.audio.fpsop.game.effect=true
+persist.vendor.audio.fpsop.game.effect.speaker=true
+persist.vendor.audio.fpsop.game.effect.bose=true
