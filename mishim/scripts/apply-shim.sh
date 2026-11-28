@@ -27,7 +27,7 @@
 
 set -e
 
-TOP=$(gettop)
+TOP=${TOP:-$(pwd)}
 DEVICE_DIR="$TOP/device/xiaomi/songyuan/mishim"
 STOCK_APK="$TOP/vendor/xiaomi/songyuan/proprietary/product/app/MiSound/MiSound.apk"
 
@@ -35,6 +35,7 @@ OUT="$DEVICE_DIR/out"
 WORK="$OUT/work"
 
 JAVA_HOME=${JAVA_HOME:-$TOP/prebuilts/jdk/jdk21/linux-x86}
+export PATH="$JAVA_HOME/bin:$PATH"
 ANDROID_JAR="$TOP/prebuilts/sdk/current/public/android.jar"
 KOTLINC="$TOP/external/kotlinc/bin/kotlinc"
 D8="$TOP/out/host/linux-x86/bin/d8"
